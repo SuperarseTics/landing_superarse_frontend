@@ -1,0 +1,218 @@
+<div class="card">
+    <h3 class="text-xl font-bold">Configuración General del Layout</h3>
+    <div class="card">
+        <!-- shortcut config -->
+        <section>
+            <div class="flex flex-row justify-content-between align-items-center w-full">
+                <h4 class="text-lg font-semibold mb-0">Menú de Atajos y Contactos</h4>
+                <p-button label="+ Nuevo Item" styleClass="p-button-link" (onClick)="addNewNavItem()"></p-button>
+            </div>
+            <p-orderList [value]="_formattedSettings.contactMenuItems" [(selection)]="selectedItems" [listStyle]="{ 'max-height': '30rem' }"  
+                [header]="'Items de navegación ('+_formattedSettings.contactMenuItems.length+')'" [dragdrop]="true">
+                <ng-template let-navItem pTemplate="item">
+                    <div class="flex flex-wrap p-2 align-items-center gap-8">
+                        <div class="flex-1 flex flex-row gap-2 ">
+                            <div class="flex flex-column gap-2">
+                                <label for="texto">Texto</label>
+                                <input class="w-full md:w-30rem mb-5" pInputText (keydown.space)="$event.stopPropagation()"  [(ngModel)]="navItem.name" />
+                            </div>
+                            <div class="flex flex-column gap-2">
+                                <label for="texto">Tipo de Enlace</label>
+                                <p-selectButton [options]="linkTypes" optionLabel="label" optionValue="type"
+                                    [(ngModel)]="navItem.type" placeholder="Selecciona un tipo de enlace" />
+                            </div>
+                            <div class="flex flex-column gap-2">
+                                <label for="texto">Valor</label>
+                                <input class="w-full md:w-30rem mb-5" pInputText (keydown.space)="$event.stopPropagation()"  [(ngModel)]="navItem.value" />
+                            </div>
+                            <div class="flex flex-column gap-2">
+                                <div>&nbsp;</div>
+                                <button pButton pRipple type="button" icon="pi pi-trash"
+                                    class="p-button-rounded p-button-text p-button-danger mb-5"
+                                    (click)="removeNavItem()"></button>
+                            </div>
+                        </div>
+                    </div>
+                </ng-template>
+            </p-orderList>
+        </section>
+        <!-- main menu config -->
+        <section>
+            <div class="flex flex-column mt-4  w-full">
+                <h4 class="text-lg font-semibold mb-0 mt-4">Logo Menú Principal</h4>
+                <div class="flex flex-column gap-2 mt-3">
+                    <p-dropdown [options]="dropdownItems" [(ngModel)]="_formattedSettings.mainMenuLogo" placeholder="Selecciona una imagen">
+                        <ng-template let-group pTemplate="item">
+                            <div class="flex align-items-center">
+                                <img [src]="group.value" style="width: 60px" /> &nbsp;
+                                <span style="width: 60px">{{ group.label }}</span>
+                            </div>
+                        </ng-template>
+                    </p-dropdown>
+
+                </div>
+            </div>
+        </section>
+        <section class="mt-4">
+            <div class="flex flex-row justify-content-between align-items-center w-full">
+                <h4 class="text-lg font-semibold mb-0">Menú Principal</h4>
+                <p-button label="+ Nuevo Item" styleClass="p-button-link" (onClick)="addNewNavItem2()"></p-button>
+            </div>
+            @for (item of _formattedSettings.mainMenuItems; track item; let i = $index) {
+            <div class="card">
+                <div class="flex flex-row align-items-center">
+                    <div class="flex flex-column gap-2 mt-4">
+                        <label for="texto" class="font-semibold">Grupo de Navegación</label>
+                        <input class="w-full md:w-30rem mb-5" pInputText (keydown.space)="$event.stopPropagation()"  [(ngModel)]="item.name" />
+                    </div>
+                    <p-button label="+ Nuevo Subgrupo de Navegacion" styleClass="p-button-link"
+                        (onClick)="addNewNavGroup(item.subItems)"></p-button>
+                </div>
+                @for (subitem of item.subItems; track subitem; let j = $index) {
+                <div class="flex flex-row align-items-center">
+                    <div class="flex flex-column gap-2 mt-4">
+                        <label for="texto" class="font-semibold">Subgrupo de Navegación</label>
+                        <input class="w-full md:w-30rem mb-5" pInputText (keydown.space)="$event.stopPropagation()"  [(ngModel)]="subitem.name" />
+                    </div>
+                    <p-button label="+ Nuevo Subitem" styleClass="p-button-link"
+                        (onClick)="addNewNavSubItem2(subitem.group)"></p-button>
+                </div>
+                <p-orderList [value]="subitem.group" [(selection)]="selectedSubitems"  
+                    [listStyle]="{ 'max-height': '30rem' }"
+                    [header]="'Items de navegación - '+ '('+subitem.group.length+')'" [dragdrop]="true">
+
+                    <ng-template let-navItem pTemplate="item">
+                        <div class="flex flex-wrap p-2 align-items-center gap-8">
+                            <div class="flex-1 flex flex-row gap-2 ">
+                                <div class="flex flex-column gap-2">
+                                    <label for="texto">Texto</label>
+                                    <input class="w-full md:w-30rem mb-5" pInputText (keydown.space)="$event.stopPropagation()"  [(ngModel)]="navItem.name" />
+                                </div>
+                                <div class="flex flex-column gap-2">
+                                    <label for="texto">URL</label>
+                                    <input class="w-full md:w-30rem mb-5" pInputText (keydown.space)="$event.stopPropagation()"  [(ngModel)]="navItem.value" />
+                                </div>
+                                <div class="flex flex-column gap-2">
+                                    <div>&nbsp;</div>
+                                    <button pButton pRipple type="button" icon="pi pi-trash"
+                                        class="p-button-rounded p-button-text p-button-danger mb-5"
+                                        (click)="removeGroupItem(i,j)"></button>
+                                </div>
+                            </div>
+                        </div>
+                    </ng-template>
+                </p-orderList>
+                }
+            </div>
+            }
+        </section>
+        <!-- footer config -->
+        <section class="mt-4">
+            <div class="flex flex-column mt-4  w-full">
+                <h4 class="text-lg font-semibold mb-0 mt-4">Logo Pie de Página</h4>
+                <div class="flex flex-column gap-2 mt-3">
+                    <p-dropdown [options]="dropdownItems" [(ngModel)]="_formattedSettings.footerLogo" placeholder="Selecciona una imagen">
+                        <ng-template let-group pTemplate="item">
+                            <div class="flex align-items-center">
+                                <img [src]="group.value" style="width: 60px" /> &nbsp;
+                                <span style="width: 60px">{{ group.label }}</span>
+                            </div>
+                        </ng-template>
+                    </p-dropdown>
+
+                </div>
+            </div>
+            <div class="flex flex-column  w-full mt-4 ">
+                <h4 class="text-lg font-semibold mb-4">Pie de Página</h4>
+
+                @for (item of _formattedSettings.footerItems; track $index) {
+                    <div class="card">
+                        <div class="flex flex-row gap-4 align-items-center">
+                            <h4 class="text-lg font-semibold mb-2">{{item.name}}</h4>
+                            <p-button label="+ Nuevo Item" styleClass="p-button-link" (onClick)="addNewFooterItem(item.name)"></p-button>
+                        </div>
+                        <p-orderList [value]="item.group" [(selection)]="selectedItemsFooter" [listStyle]="{ 'max-height': '30rem' }"  
+                            [header]="'Items de navegación ('+item.group.length+')'" [dragdrop]="true">
+                            <ng-template let-navItem pTemplate="item">
+                                <div class="flex flex-wrap p-2 align-items-center gap-8">
+                                    <div class="flex-1 flex flex-row gap-2 ">
+                                        
+                                        <div class="flex flex-column gap-2">
+                                            <label for="texto">
+                                                @if (item.name == 'Contacto') {
+                                                    Ciudad
+                                                }@else {
+                                                    Texto
+                                                }
+                                            </label>
+                                            <input class="w-full md:w-30rem mb-5" pInputText (keydown.space)="$event.stopPropagation()"  [(ngModel)]="navItem.name" [disabled]="item.name == 'Admisiones'"/>
+                                        </div>
+                                        @if (item.name == 'Contacto') {
+                                            <div class="flex flex-column gap-2">
+                                                <label for="texto">Dirección</label>
+                                                <input class="w-full md:w-30rem mb-5" pInputText (keydown.space)="$event.stopPropagation()"  [(ngModel)]="navItem.address" />
+                                            </div>
+                                            <div class="flex flex-column gap-2">
+                                                <label for="texto">Teléfono</label>
+                                                <input class="w-full md:w-30rem mb-5" pInputText (keydown.space)="$event.stopPropagation()"  [(ngModel)]="navItem.phone" />
+                                            </div>
+                                        }
+                                        @if (item.name == 'Admisiones') {
+                                            <div class="flex flex-column gap-2">
+                                                <label for="texto">Whatsapp</label>
+                                                <input class="w-full md:w-30rem mb-5" pInputText (keydown.space)="$event.stopPropagation()"  [(ngModel)]="navItem.whatsapp" />
+                                            </div>
+                                            <div class="flex flex-column gap-2">
+                                                <label for="texto">Email</label>
+                                                <input class="w-full md:w-30rem mb-5" pInputText (keydown.space)="$event.stopPropagation()"  [(ngModel)]="navItem.email" />
+                                            </div>
+                                        }
+                                        @if (item.name == 'Links') {
+                                            <div class="flex flex-column gap-2">
+                                                <label for="texto">URL</label>
+                                                <input class="w-full md:w-30rem mb-5" pInputText (keydown.space)="$event.stopPropagation()"  [(ngModel)]="navItem.url" />
+                                            </div>
+                                        }
+                                        <div class="flex flex-column gap-2">
+                                            <div>&nbsp;</div>
+                                            <button pButton pRipple type="button" icon="pi pi-trash"
+                                                class="p-button-rounded p-button-text p-button-danger mb-5"
+                                                (click)="removeFooterNavItem(item.name)"></button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </ng-template>
+                        </p-orderList>
+                    </div>
+                }
+
+            </div>
+        </section>
+        <!-- seo config -->
+        <section class="mt-4">
+            <div class="flex flex-column mt-4  w-full">
+                <h4 class="text-lg font-semibold mb-0 my-4">SEO</h4>
+                <div class="flex flex-row">
+                    <div class="flex flex-column gap-2" style="width: 50%;">
+                        <label for="texto" class="font-semibold">Meta Title</label>
+                        <input class="w-full md:w-30rem mb-5" pInputText (keydown.space)="$event.stopPropagation()"  [value]="seoConfig.title" />
+                    </div>
+                    <div class="flex flex-column gap-2" style="width: 50%;">
+                        <label for="texto" class="font-semibold">Meta Description</label>
+                        <textarea id="description" pInputText (keydown.space)="$event.stopPropagation()" area class="w-full md:w-30rem mb-5" [value]="seoConfig.description" required rows="3" cols="20"></textarea>
+                    </div>
+                </div>
+                <div class="flex flex-row">
+                    <div class="flex flex-column gap-2" style="width: 50%;">
+                        <label for="texto" class="font-semibold">Meta Keywords</label>
+                        <textarea id="description" pInputText (keydown.space)="$event.stopPropagation()" area class="w-full md:w-30rem mb-5" [value]="seoConfig.keywords" required rows="3" cols="20"></textarea>
+                    </div>
+                    <div class="flex flex-column gap-2" style="width: 50%;">
+                        <label for="texto" class="font-semibold">Meta Robots</label>
+                        <textarea id="description" pInputText (keydown.space)="$event.stopPropagation()" area class="w-full md:w-30rem mb-5" [value]="seoConfig.robots" required rows="3" cols="20"></textarea>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>

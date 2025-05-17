@@ -1,0 +1,13 @@
+.nav_subitems_container {
+    visibility: hidden;
+    margin-top: 16px;
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 500ms ease-in-out;
+}
+
+.nav_subitems_container.active {
+    visibility: visible;
+    z-index: 2;
+    opacity: 1;
+}

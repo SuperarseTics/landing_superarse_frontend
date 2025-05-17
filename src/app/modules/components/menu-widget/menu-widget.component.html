@@ -1,0 +1,88 @@
+<div class="w-full bg-white text-[#1283C6] relative">
+    <nav *ngIf="screenWidth > 835"
+        class="w-full flex flex-row justify-between items-center font-semibold text-base mx-auto ">
+        <a href="#" class="w-full sm:w-1/4" style="justify-items: center;">
+            <img class="w-[16.5rem] m-2" [src]="menuLogo" alt="img">
+        </a>
+        <ul class="w-full sm:w-3/4 flex flex-wrap gap-2 justify-center overflow-hidden">
+            @for (item of hardcodedMenu; track $index) {
+            <li class="nav w-1/5 p-2 border-l border-l-[#616160] flex items-center justify-center h-8">
+                <span class="nav_title hover:cursor-pointer hover:text-[#f97316] flex items-center"
+                    (click)="toggleSubMenu($index)">
+                    {{item.name}}
+                    <i class="pi pi-caret-down ml-2" style="font-size: 1rem"></i>
+                </span>
+                <ul class="nav_subitems_container bg-gray-50 text-[#f97316] w-full mx-auto left-0 py-4 px-2 grid grid-cols-4"
+                    [class.active]="isSubMenuOpen[$index]"
+                    style="padding-left: 3% !important; margin-left:0px; margin-top:0; position: absolute; top:100%;">
+                    @for (subitem of item.subItems; track $index) {
+                    <li class="pe-4">
+                        <span class="text-lg mb-3 block">{{subitem.name}}</span>
+                        <ul class="flex flex-col gap-2">
+                            @for (option of subitem.group; track $index) {
+                            <li>
+                                <a [href]="option.value"
+                                    class="text-[#616160] hover:text-[#FBBF2D] hover:underline hover:decoration-[#FBBF2D]">
+                                    {{ option.name }}
+                                </a>
+                            </li>
+                            }
+                        </ul>
+                    </li>
+                    }
+                </ul>
+            </li>
+            }
+        </ul>
+    </nav>
+    <nav *ngIf="screenWidth <= 835"
+        class="w-full flex flex-row justify-between items-center font-semibold text-base max-w-[1140px] mx-auto p-4">
+        <!-- Logo -->
+        <a href="#" class="w-1/3">
+            <img class="w-[6rem]" [src]="menuLogo" alt="img">
+        </a>
+
+        <!-- Botón menú hamburguesa en móviles -->
+        <button class="text-[#1283C6] text-2xl" (click)="isMenuOpen = !isMenuOpen">
+            <i class="pi" [ngClass]="isMenuOpen ? 'pi-times' : 'pi-bars'"></i>
+        </button>
+
+        <!-- Menú -->
+        <ul [ngClass]="{'hidden': !isMenuOpen, 'flex': isMenuOpen, 'flex-col': true}"
+            class="w-full gap-5 mb-0 items-center absolute top-full left-0 bg-white p-4 shadow-lg z-10">
+
+            @for (item of hardcodedMenu; track $index) {
+            <li class="nav p-4 border-b">
+                <span class="nav_title  hover:cursor-pointer text-lg flex items-center justify-between"
+                    (click)="toggleSubMenu($index)">
+                    {{item.name}}
+                    <i class="pi pi-caret-down ml-2"></i>
+                </span>
+
+                <!-- Submenú -->
+                <ul [ngClass]="{'hidden': !isSubMenuOpen[$index], 'block': isSubMenuOpen[$index]}"
+                    class="w-full py-4 px-2 flex flex-col gap-2 text-[#f97316] ">
+                    @for (subitem of item.subItems; track $index) {
+                    <li *ngIf="subitem.name != ''">
+                        <span class="text-lg mb-3 block">{{subitem.name}}
+                            <hr>
+                        </span>
+                        <ul class="flex flex-col gap-2 mt-4">
+                            @for (option of subitem.group; track $index) {
+                            <li>
+                                <a [href]="option.value"
+                                    class="text-[#616160] hover:text-[#FBBF2D] hover:underline hover:decoration-[#FBBF2D]">
+                                    {{ option.name }}
+                                </a>
+                            </li>
+                            }
+                        </ul>
+                    </li>
+                    }
+                </ul>
+            </li>
+            }
+        </ul>
+    </nav>
+
+</div>

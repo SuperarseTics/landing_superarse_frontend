@@ -1,0 +1,15 @@
+<div class="grid grid-cols-3 gap-4">
+    <div *ngFor="let value of data"
+        class="rounded-lg border-1 border-solid border-gray-100 p-4 shadow-lg shadow-black/20 hover:bg-gray-50"
+        [ngStyle]="hoveredItem === value ? {'color': value.color,} : {}" (mouseenter)="hoveredItem = value"
+        (mouseleave)="hoveredItem = null">
+        <a [href]="value.src">
+            <div class="text-center">
+                <b class="font-semibold">{{ value.name }}</b>
+            </div>
+            <div class="gap-4 text-justify">
+                <img [src]="value.img" style="width: 100%;">
+            </div>
+        </a>
+    </div>
+</div>

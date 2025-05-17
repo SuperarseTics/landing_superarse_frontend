@@ -1,0 +1,35 @@
+<div class="w-full bg-[#616160] h-[16vh]" (click)="action()">
+    <div class="w-full flex flex-row max-w-[1140px] mx-auto items-center p-4 h-full text-2xl text-white">
+        <p class="w-2/3 m-0 font-semibold">
+            Busca la carrera <span class="text-[#8DBF31]">de tus sueños</span>
+        </p>
+
+        <!-- Contenedor del Select -->
+        <div class="relative w-1/2">
+            <!-- Input de búsqueda -->
+            <input type="text" placeholder="Ej. Desarrollo de Software"
+                class="text-black bg-white border border-gray-300 rounded-full w-full px-4 py-2 cursor-pointer focus:ring-2 focus:ring-[#8DBF31] focus:outline-none"
+                [(ngModel)]="busqueda" (focus)="mostrarOpciones = true" (input)="filtrarOpciones()"
+                (blur)="ocultarOpcionesConRetraso()" (keydown.enter)="ejecutarFuncion()" />
+
+            <!-- Dropdown de opciones -->
+            <ul *ngIf="mostrarOpciones"
+                class="absolute z-10 bg-white border border-gray-300 rounded-md w-full mt-1 max-h-52 overflow-y-auto shadow-lg">
+                <li *ngFor="let opcion of opcionesFiltradas; let i = index"
+                    class="px-4 py-2 hover:bg-[#8DBF31] hover:text-white text-black cursor-pointer"
+                    (click)="seleccionarOpcion(opcion)">
+                    {{ opcion.nombre }}
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- <div class="w-full bg-[#616160] h-[16vh]" (click)="action()">
+    <div class="w-full flex flex-row max-w-[1140px] mx-auto items-center p-4 h-full text-2xl text-white">
+        <p class=" w-2/3 m-0 font-semibold">Busca la carrera <span class="text-green-500">de tus sueños</span></p>
+        <div class="text-black relative w-full">
+                <input type="text" class="text-black rounded-full w-1/2 px-3 py-2 focus:!ring-2 !ring-[#8DBF31] !ring-inset" placeholder="Ej. Desarrollo de Software" />
+        </div>
+    </div>
+</div> -->

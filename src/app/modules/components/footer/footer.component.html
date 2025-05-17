@@ -1,0 +1,144 @@
+<footer class="flex flex-col bg-[#616160] py-4" (click)="action()">
+    <img class="w-[18.5rem] self-center"  [src]="footerLogo" alt="">
+    <ul class="flex flex-row justify-center mt-4 gap-4">
+        <li class="px-4 py-2 bg-[#1877F2] rounded-md hover:-translate-y-2 transition-all ease-in-out duration-300 flex items-center justify-center">
+            <a href="https://www.facebook.com/share/1BkpwkU6aP/?mibextid=wwXIfr" class="text-white hover:text-white flex items-center justify-center">
+                <i class="pi pi-facebook" style="font-size: 1.5rem"></i>
+            </a>
+        </li>
+        <li class="px-4 py-2 bg-[#E1306C] rounded-md hover:-translate-y-2 transition-all ease-in-out duration-300 flex items-center justify-center h-12">
+            <a href="https://www.instagram.com/superarse1?igsh=MW4yMGt5bmhnNXA0NQ%3D%3D&utm_source=qr" class="text-white hover:text-white flex items-center justify-center">
+                <i class="pi pi-instagram" style="font-size: 1.5rem"></i>
+            </a>
+        </li>
+        <li class="px-4 py-2 bg-black rounded-md hover:-translate-y-2 transition-all ease-in-out duration-300 flex items-center justify-center h-12">
+            <a href="https://www.tiktok.com/@superarse1?_t=ZM-8tfNMyWEexC&_r=1" class="text-white hover:text-white flex items-center justify-center">
+                <img src="../../../../assets/tiktok-1.svg" class="w-6 h-6">
+            </a>
+        </li>
+        <!-- <li class="px-4 py-2 bg-white rounded-md hover:-translate-y-2 transition-all ease-in-out duration-300 flex items-center justify-center h-12">
+            <a href="https://teams.microsoft.com/v2" class="flex items-center justify-center">
+                <img src="../../../../assets/teams.png" class="w-6 h-6">
+            </a>
+        </li> -->
+    </ul>
+    <hr class="gradient-divider">
+    <div *ngIf="screenWidth > 835" class="grid grid-cols-3 mx-auto gap-12 text-white">
+        <section class="flex flex-col gap-4">
+            <div class="flex flex-col justify-center items-center">
+                @for(item of footerItems; track $index){
+                    @if (item.name == 'Contacto') {
+                        @for (group of item.group; track $index) {
+                            <h2 class="text-inherit text-lg font-semibold">{{group.name}}</h2>
+                            <div class="flex flex-row gap-2 items-center">
+                                <i class="pi pi-building" style="font-size: 1.5rem"></i>
+                                <p class="mb-0">{{group.address}}</p>
+                            </div>
+                            <div class="flex flex-row gap-2 items-center">
+                                <i class="pi pi-phone" style="font-size: 1.5rem"></i>
+                                <a [href]="'tel:'+group.phone" class="mb-0">{{group.phone}}</a>
+                            </div>
+                        }
+                    }
+                }
+            </div>
+        </section>
+        <section class="flex flex-col gap-4">
+            <div class="flex flex-col justify-center items-center">
+                @for(item of footerItems; track $index){
+                    @if (item.name == 'Admisiones') {
+                        @for (group of item.group; track $index) {
+                            <h2 class="text-inherit text-lg font-semibold">Admisiones</h2>
+                            <div class="flex flex-row gap-2 items-center">
+                                <i class="pi pi-building" style="font-size: 1.5rem"></i>
+                                <a [href]="'mailto:'+group.email" class="mb-0">{{group.email}}</a>
+                            </div>
+                            <div class="flex flex-row gap-2 items-center">
+                                <i class="pi pi-whatsapp" style="font-size: 1.5rem"></i>
+                                <a [href]="'https://api.whatsapp.com/send?phone='+group.whatsapp" class="mb-0">{{group.whatsapp}}</a>
+                            </div>
+                        }
+                    }
+                }
+
+            </div>
+        </section>
+        <section class="flex flex-col">
+            <div class="flex flex-col">
+                <h2 class="text-inherit text-lg font-semibold">LINKS DE INTERES</h2>
+                <ul>
+                    @for(item of footerItems; track $index){
+                        @if (item.name == 'Links') {
+                            @for (group of item.group; track $index) {
+                                <li class="py-2 px-2 flex flex-row items-center text-base gap-3 font-semibold">
+                                    <i [class]="'pi '+group.icon" style="font-size: 1.5rem"></i>
+                                    <a class="text-white" [href]="group.url">{{group.name}}</a>
+                                </li>
+                            }
+                        }
+                    }
+                </ul>
+            </div>
+        </section>
+    </div>
+    <div *ngIf="screenWidth <= 835" class="grid grid-cols-1 mx-auto gap-12 text-white">
+        <section class="flex flex-col gap-4">
+            <div class="flex flex-col justify-center items-center">
+                @for(item of footerItems; track $index){
+                    @if (item.name == 'Contacto') {
+                        @for (group of item.group; track $index) {
+                            <h2 class="text-inherit text-lg font-semibold">{{group.name}}</h2>
+                            <div class="flex flex-row gap-2 items-center">
+                                <i class="pi pi-building" style="font-size: 1.5rem"></i>
+                                <p class="mb-0">{{group.address}}</p>
+                            </div>
+                            <div class="flex flex-row gap-2 items-center">
+                                <i class="pi pi-phone" style="font-size: 1.5rem"></i>
+                                <a [href]="'tel:'+group.phone" class="mb-0">{{group.phone}}</a>
+                            </div>
+                        }
+                    }
+                }
+            </div>
+        </section>
+        <section class="flex flex-col gap-4">
+            <div class="flex flex-col justify-center items-center">
+                @for(item of footerItems; track $index){
+                    @if (item.name == 'Admisiones') {
+                        @for (group of item.group; track $index) {
+                            <h2 class="text-inherit text-lg font-semibold">Admisiones</h2>
+                            <div class="flex flex-row gap-2 items-center">
+                                <i class="pi pi-building" style="font-size: 1.5rem"></i>
+                                <a [href]="'mailto:'+group.email" class="mb-0">{{group.email}}</a>
+                            </div>
+                            <div class="flex flex-row gap-2 items-center">
+                                <i class="pi pi-whatsapp" style="font-size: 1.5rem"></i>
+                                <a [href]="'https://api.whatsapp.com/send?phone='+group.whatsapp" class="mb-0">{{group.whatsapp}}</a>
+                            </div>
+                        }
+                    }
+                }
+
+            </div>
+        </section>
+        <section class="flex flex-col">
+            <div class="flex flex-col">
+                <h2 class="text-inherit text-lg font-semibold">LINKS DE INTERES</h2>
+                <ul>
+                    @for(item of footerItems; track $index){
+                        @if (item.name == 'Links') {
+                            @for (group of item.group; track $index) {
+                                <li class="py-4 px-2 flex flex-row items-center text-base gap-3 font-semibold">
+                                    <i [class]="'pi '+group.icon" style="font-size: 1.5rem"></i>
+                                    <a class="text-white" [href]="group.url">{{group.name}}</a>
+                                </li>
+                            }
+                        }
+                    }
+                </ul>
+            </div>
+        </section>
+    </div>
+
+    <p class="text-white text-center mb-0 mt-4 font-semibold">Diseñado por Instituto Superarse. Todos los derechos reservados.</p>
+</footer>

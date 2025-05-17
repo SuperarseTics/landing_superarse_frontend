@@ -1,0 +1,41 @@
+<vicarti-shortcut-widget></vicarti-shortcut-widget>
+<vicarti-menu-widget></vicarti-menu-widget>
+<h2 class="font-semibold text-5xl py-8 mt-4 text-[#1283C6]" style="margin-left: 15%; margin-right: 15%;">
+    {{ title }}
+</h2>
+
+<div class="flex flex-row gap-8" style="margin-left: 15%; margin-right: 15%;">
+    <div class="flex flex-col gap-4 text-justify">
+        <b class="font-semibold text-3xl text-blue-400">{{ subtitle }}</b>
+        <ul class="list-outside list-disc mb-2" style="margin-left: 5%; margin-right: 5%;">
+            <li *ngFor="let value of data">
+                <label *ngIf="value.title != ''"> {{ value.title }}</label>
+                <div *ngIf="value.type == 'one'">
+                    <div *ngFor="let subdata of value.files">
+                        <a class="text-[#1283C6]" *ngIf="subdata.type == 'pdf'" (click)="redirigir('pdf-viewer', subdata.title, subdata.src, 'pdf')"
+                            style="cursor: pointer;">{{ subdata.title }}
+                        </a>
+                        <a class="text-[#1283C6]" *ngIf="subdata.type == 'download'" [href]="subdata.src"
+                            style="cursor: pointer;">{{ subdata.title }}
+                        </a>
+
+                    </div>
+                </div>
+                <ul *ngIf="value.type == 'multiple'" class="list-outside list-disc mb-2" style="margin-left: 5%; margin-right: 5%;">
+                    <li *ngFor="let subdata of value.files">
+                        <a class="text-[#1283C6]" *ngIf="subdata.type == 'pdf'" (click)="redirigir('pdf-viewer', subdata.title, subdata.src, 'pdf')"
+                            style="cursor: pointer;">{{ subdata.title }}
+                        </a>
+                        <a class="text-[#1283C6]" *ngIf="subdata.type == 'download'" [href]="subdata.src"
+                            style="cursor: pointer;">{{ subdata.title }}
+                        </a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</div>
+
+
+<vicarti-footer class="block" style="margin-top:64px;"></vicarti-footer>
+<app-whatsapp></app-whatsapp>

@@ -1,0 +1,110 @@
+<h2 class="font-semibold text-5xl p-8 text-[#1283C6]"> <span class="font-normal">Nuestras</span> Autoridades</h2>
+<p-organizationChart
+    [value]="data"
+    selectionMode="multiple"
+    [(selection)]="selectedNodes"
+    >
+        <ng-template let-node pTemplate="person">
+            <div class="p-2 text-center flex flex-col items-center">
+                <img *ngIf="node.data.image !=''"
+                    [src]="node.data.image"
+                    class="mb-3 w-52 h-52" />
+                <div class="font-bold text-2xl">
+                    {{ node.data.name }}
+                </div>
+                <div>
+                    {{ node.data.title }}
+                </div>
+            </div>
+        </ng-template>
+</p-organizationChart>
+<div class="w-full overflow-auto">
+    <hr>
+    <p-organizationChart
+        [value]="secondLevel1"
+        selectionMode="multiple"
+        [(selection)]="selectedNodes2"
+        [style]="{'max-width': '100%', 'overflow': 'auto'}"
+        >
+            <ng-template let-node pTemplate="person">
+                <div class="p-2 text-center flex flex-col items-center">
+                    <img *ngIf="node.data.image !=''"
+                        [src]="node.data.image"
+                        class="mb-3 w-52 h-52" />
+                    <div class="font-bold text-2xl">
+                        {{ node.data.name }}
+                    </div>
+                    <div>
+                        {{ node.data.title }}
+                    </div>
+
+                </div>
+            </ng-template>
+    </p-organizationChart>
+    <hr>
+    <p-organizationChart
+        [value]="secondLevel2"
+        selectionMode="multiple"
+        [(selection)]="selectedNodes2"
+        [style]="{'max-width': '100%', 'overflow': 'auto'}"
+        >
+            <ng-template let-node pTemplate="person">
+                <div class="p-2 text-center flex flex-col items-center">
+                    <img *ngIf="node.data.image !=''"
+                        [src]="node.data.image"
+                        class="mb-3 w-52 h-52" />
+                    <div class="font-bold text-2xl">
+                        {{ node.data.name }}
+                    </div>
+                    <div>
+                        {{ node.data.title }}
+                    </div>
+
+                </div>
+            </ng-template>
+    </p-organizationChart>
+    <hr>
+    <p-organizationChart
+        [value]="secondLevel3"
+        selectionMode="multiple"
+        [(selection)]="selectedNodes2"
+        [style]="{'max-width': '100%', 'overflow': 'auto'}"
+        >
+            <ng-template let-node pTemplate="person">
+                <div class="p-2 text-center flex flex-col items-center">
+                    <img *ngIf="node.data.image !=''"
+                        [src]="node.data.image"
+                        class="mb-3 w-52 h-52" />
+                    <div class="font-bold text-2xl">
+                        {{ node.data.name }}
+                    </div>
+                    <div>
+                        {{ node.data.title }}
+                    </div>
+
+                </div>
+            </ng-template>
+    </p-organizationChart>
+    <hr>
+    <p-organizationChart
+        [value]="secondLevel4"
+        selectionMode="multiple"
+        [(selection)]="selectedNodes2"
+        [style]="{'max-width': '100%', 'overflow': 'auto'}"
+        >
+            <ng-template let-node pTemplate="person">
+                <div class="p-2 text-center flex flex-col items-center">
+                    <img *ngIf="node.data.image !=''"
+                        [src]="node.data.image"
+                        class="mb-3 w-52 h-52" />
+                    <div class="font-bold text-2xl">
+                        {{ node.data.name }}
+                    </div>
+                    <div>
+                        {{ node.data.title }}
+                    </div>
+
+                </div>
+            </ng-template>
+    </p-organizationChart>
+</div>

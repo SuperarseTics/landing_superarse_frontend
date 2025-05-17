@@ -1,0 +1,53 @@
+<div class="w-full py-4" [ngClass]="{'bg-[#EF7A15]' : hasGrayBackground}">
+    <h2 class="text-3xl font-bold mx-8 my-5 text-[#1283C6]" [ngClass]="{'text-white' : hasGrayBackground}">
+        {{sliderHeader}}</h2>
+    <swiper-container *ngIf="'studies' == elementId" [id]="elementId" class="mx-8 custom-swiper mt-2" init="true">
+        @for (item of studies; track $index) {
+        <swiper-slide class="flex flex-row gap-4" style="height: 80vh;">
+            <div class="flex flex-col">
+                <div class="flex justify-center" [ngClass]="{'bg-white' : hasGrayBackground}" style="height: 35vh;">
+                    <img class="w-full" [src]="item.imgUrl" style="height: 100%; margin: 5px 15%;" alt="some img">
+                </div>
+                <div [ngClass]="{'bg-white' : hasGrayBackground}"
+                    class="w-full flex flex-col gap-4 py-4 px-4 justify-center shadow-md rounded-sm"
+                    style="height: 38vh">
+                    <h3 class="text-lg m-0">{{item.title}}</h3>
+                    <p class="text-inherit m-0 line-clamp-3">{{ item.resume }}</p>
+                    @if (isNewSlider) {
+                    <p class="m-0 text-sm"> <span nz-icon nzType="calendar" nzTheme="outline"></span> {{item.date}}</p>
+                    }
+                    <a [href]="item.urlNews"
+                        class="self-start text-sm font-semibold bg-[#8DBF31] px-3 py-2 rounded-full text-white hover:text-inherit hover:transition-all hover:ease-in-out border-2 hover:bg-transparent border-solid bg-[#8DBF31] m-0">Leer
+                        Más</a>
+                </div>
+            </div>
+        </swiper-slide>
+        }
+    </swiper-container>
+    <swiper-container *ngIf="'newsSwiper' == elementId" [id]="elementId" class="mx-8 custom-swiper mt-2" init="true">
+        @for (item of news; track $index) {
+        <swiper-slide class="flex flex-row gap-4" style="height: 80vh;">
+            <div class="flex flex-col">
+                <div *ngIf="item.imgUrl != ''" class="flex justify-center" [ngClass]="{'bg-white' : hasGrayBackground}"
+                    style="height: 35vh;">
+                    <img class="w-full" [src]="item.imgUrl" style="height: 100%; margin: 5px 15%;" alt="some img">
+                </div>
+                <div [ngClass]="{'bg-white' : hasGrayBackground}"
+                    class="w-full flex flex-col gap-4 py-4 px-4 justify-center shadow-md rounded-sm"
+                    style="height: 73vh">
+                    <h3 *ngIf="item.title != ''" class="text-lg m-0">{{item.title}}</h3>
+                    <!-- <p class="text-inherit m-0 line-clamp-8">{{ item.resume }}</p> -->
+                    <p class="text-inherit m-0 line-clamp-8 overflow-hidden">{{ item.resume }}</p>
+                    @if (isNewSlider) {
+                    <p *ngIf="item.date != ''" class="m-0 text-sm"> <span nz-icon nzType="calendar"
+                            nzTheme="outline"></span> {{item.date}}</p>
+                    }
+                    <a *ngIf="item.urlNews != ''" [href]="item.urlNews"
+                        class="self-start text-sm font-semibold bg-[#8DBF31] px-3 py-2 rounded-full text-white hover:text-inherit hover:transition-all hover:ease-in-out border-2 hover:bg-transparent border-solid bg-[#8DBF31] m-0">Leer
+                        Más</a>
+                </div>
+            </div>
+        </swiper-slide>
+        }
+    </swiper-container>
+</div>

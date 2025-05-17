@@ -1,0 +1,33 @@
+<div class="card">
+    <div class="flex flex-row gap-4 justify-content-between">
+        <h4>Administrador de Contenido Multimedia</h4>
+        <button pButton pRipple label="Crear espacio multimedia" icon="pi pi-plus" (click)="addPage()"></button>
+    </div>
+    <p-table [value]="articles" [paginator]="true" [selection]="selectedRow" [rows]="10" responsiveLayout="scroll" [globalFilterFields]="['name']">
+        <ng-template pTemplate="header">
+            <tr>
+                <th style="width:200px" >Orden</th>
+                <th style="width:200px" >Fecha de Carga</th>
+                <th style="width:200px" >Vista Previa</th>
+                <th style="width:200px">Página</th>
+                <th style="width:200px">Acciones</th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-page >
+            <tr>
+                <td style="width:200px" class="font-bold">{{page.id}}</td>
+                <td style="width:200px">{{page.date}}</td>
+                <td style="width: 200px;">
+                    <img  [src]="page.url" width="150" style="vertical-align: middle"/>
+                </td>
+                <td style="width:200px">{{page.name}}</td>
+                <td>
+                    <span class="p-buttonset">
+                        <button pButton pRipple label="Subir" icon="pi pi-upload" [routerLink]="['editor']"></button>
+                        <button pButton pRipple label="Borrar" icon="pi pi-trash" class="p-button-danger" (click)="removePage(page.id)"></button>
+                    </span>
+                </td>
+            </tr>
+        </ng-template>
+    </p-table>
+</div>

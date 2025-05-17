@@ -1,0 +1,54 @@
+<vicarti-shortcut-widget></vicarti-shortcut-widget>
+<vicarti-menu-widget></vicarti-menu-widget>
+<h2 class="font-semibold text-5xl py-8 mt-4 text-[#1283C6] " style="margin-left: 15%; margin-right: 15%;">
+    Bolsa de Empleo
+</h2>
+
+<div class="gap-4 justify-center" style="margin-left: 15%; margin-right: 15%;">
+    <div class="flex flex-row gap-8 justify-center mt-4">
+        <div class="w-2/3 flex flex-col gap-4 text-justify">
+            <p class="mb-2">
+                Sabemos que elegir una carrera es una decisión fundamental que conlleva desafíos y
+                responsabilidades. Por ello, en el Tecnológico Superarse pensamos en tu futuro y te brindamos
+                asesoría y acompañamiento en orientación vocacional.
+            </p>
+            <p class="mb-2">
+                Te apoyamos en este proceso de transición clave para tu proyecto de vida, ayudándote a tomar
+                decisiones informadas y alineadas con tus intereses, habilidades y aspiraciones profesionales.
+            </p>
+        </div>
+        <div class="w-1/3 flex flex-col gap-4 text-justify">
+            <img src="../../../assets/modules/bienestar-institucional/orientacion vocacional.png"
+                style="width: 100%;" />
+        </div>
+    </div>
+    <div class="gap-8 text-justify my-8">
+        <b class="font-bold text-3xl text-black">Bienvenido a la bolsa de empleo del Tecnológico SUPERARSE</b>
+        <p class="mb-4">
+            Nuestro objetivo es impulsar la empleabilidad y facilitar la inserción laboral de nuestros graduados, además
+            de ampliar las oportunidades de prácticas profesionales.
+        </p>
+        <p class="mb-2">
+            ¡Conéctate con el mundo laboral y haz crecer tu carrera con nosotros!
+        </p>
+        <section class="w-full flex justify-center py-4">
+            <div class="mx-auto grid gap-8"
+                [style.grid-template-columns]="'repeat('+counterItems.length/(screenWidth <= 835 ? 2 : 1)+', minmax(0, 2fr))'">
+                @for (item of counterItems; track $index) {
+                <div class="flex flex-col items-center justify-center gap-4 hover:bg-gray-100 p-2">
+                    <div
+                        class="px-6 py-3 bg-[#1283C6] text-center text-white font-semibold rounded-lg shadow-md hover:text-[#FBBF2D] hover:bg-white focus:outline-none focus:ring-2 focus:ring-opacity-75">
+                        <a [href]="item.src">
+                            {{ item.label }}
+                        </a>
+                    </div>
+                </div>
+                }
+            </div>
+        </section>
+    </div>
+</div>
+
+
+<vicarti-footer class="block" style="margin-top:64px;"></vicarti-footer>
+<app-whatsapp></app-whatsapp>
