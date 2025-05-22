@@ -1,0 +1,52 @@
+<vicarti-shortcut-widget></vicarti-shortcut-widget>
+<vicarti-menu-widget></vicarti-menu-widget>
+<h2 class="font-semibold text-5xl py-8 mt-4 text-[#1283C6]" style="margin-left: 15%; margin-right: 15%;">
+    {{ title }}
+</h2>
+
+<div class="gap-8 justify-center" style="margin-left: 15%; margin-right: 15%;">
+    <section *ngIf="logo != null" class="flex flex-row ">
+        <div class="w-1/2 flex flex-col gap-4 text-justify">
+            <img [src]="logo" style="width:100%;">
+        </div>
+        <div class="w-1/2 flex flex-col gap-4 text-justify">
+            <section *ngFor="let item of data">
+                <p *ngIf="item.type == 'text'">
+                    <label *ngIf="item.field != ''" class="font-bold text-xl">{{ item.field }}: </label><br>
+                    <label class="text-base text-justify">{{ item.value }}</label>
+                </p>
+                <div *ngIf="item.type == 'image'" class="gap-8 text-justify mb-5">
+                    <label *ngIf="item.value.length > 0" class="font-bold text-xl">{{ item.field }}:
+                    </label>
+                    <div class="flex">
+                        <div *ngFor="let img of item.value" class="flex justify-center">
+                            <img [src]="img" style="width:80%;">
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </section>
+    <section *ngIf="logo == null">
+        <div class="gap-4 text-justify">
+            <section *ngFor="let item of data">
+                <p *ngIf="item.type == 'text'">
+                    <label *ngIf="item.field != ''" class="font-bold text-xl">{{ item.field }}: </label><br>
+                    <label class="text-base text-justify">{{ item.value }}</label>
+                </p>
+                <div *ngIf="item.type == 'image'" class="gap-8 text-justify mb-5">
+                    <label *ngIf="item.value.length > 0" class="font-bold text-xl">{{ item.field }}:
+                    </label>
+                    <div class="flex">
+                        <div *ngFor="let img of item.value" class="flex justify-center">
+                            <img [src]="img" style="width:80%;">
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </section>
+</div>
+
+<vicarti-footer class="block" style="margin-top:64px;"></vicarti-footer>
+<app-whatsapp></app-whatsapp>

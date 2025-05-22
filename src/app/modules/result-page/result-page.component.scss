@@ -1,0 +1,11 @@
+::ng-deep ul{
+    list-style-type: none;
+}
+#quote::before{
+    background-image: url('../../../assets/quotes.png'); background-repeat: no-repeat; background-size: 10% auto;
+    background-position: 95% 20%;
+    content: '';
+}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;

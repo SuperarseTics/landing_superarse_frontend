@@ -1,0 +1,23 @@
+<vicarti-shortcut-widget></vicarti-shortcut-widget>
+<vicarti-menu-widget></vicarti-menu-widget>
+<div class="w-full relative flex flex-col items-center justify-center">
+    <video #introVideo autoplay muted loop playsinline loop class="w-full h-[60vh] object-cover object-top">
+        <source src="assets/banners/Video-HeaderWeb-SuperarseV2.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+</div>
+<vicarti-searcher></vicarti-searcher>
+<vicarti-grid-columns></vicarti-grid-columns>
+<div id="quote" class="flex flex-row justify-center items-center bg-gray-100" style="height: 25vh;">
+    <p class="text-3xl text-[#EF7A15] p-4">"La esencia educacional de Superarse se basa en la construcción del <br>
+        conocimiento con nuestros pilares institucionales"</p>
+</div>
+<vicarti-slider></vicarti-slider>
+<vicarti-content-slider [sliderHeader]="'Estudia lo que te apasiona'" [isNewsSlider]="false"
+    [elementId]="'studies'"></vicarti-content-slider>
+<vicarti-grid-columns isCounter="true"></vicarti-grid-columns>
+<vicarti-content-slider [sliderHeader]="'Nuestros estudiantes dicen'" [isNewsSlider]="true" [elementId]="'newsSwiper'"
+    [hasGrayBackground]="true"></vicarti-content-slider>
+<vicarti-multimedia></vicarti-multimedia>
+<app-whatsapp [margin]="0"></app-whatsapp>
+<vicarti-footer></vicarti-footer>

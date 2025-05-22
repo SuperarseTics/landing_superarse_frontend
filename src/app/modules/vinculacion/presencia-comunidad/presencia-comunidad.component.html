@@ -1,0 +1,132 @@
+<vicarti-shortcut-widget></vicarti-shortcut-widget>
+<vicarti-menu-widget></vicarti-menu-widget>
+<h2 class="font-semibold text-5xl py-8 mt-4 text-[#1283C6]" style="margin-left: 15%; margin-right: 15%;">
+    Presencia en la Comunidad
+</h2>
+
+<div class="gap-8 text-justify mb-5" style="margin-left: 15%; margin-right: 15%;">
+    <div class="text-3xl cursor-pointer text-justify flex justify-between items-center"
+        (click)="toggleExpansion('infor_pao1')">
+        <b class="text-justify">
+            Informe de PAO 1
+        </b>
+        <b class="ml-2 text-2xl"> &gt; </b>
+    </div>
+    <section *ngIf="expandedState['infor_pao1']">
+        <app-pdf-viewer [src]="'/assets/modules/vinculación/presencia-comunidad/INFORME DE PRESENCIA PAO 1.pdf'"></app-pdf-viewer>
+    </section>
+</div>
+<div class="border-t-4 border-gray-300 my-5" style="margin-left: 15%; margin-right: 15%;"></div>
+
+<div class="gap-8 text-justify mb-5" style="margin-left: 15%; margin-right: 15%;">
+    <div class="text-3xl cursor-pointer text-justify flex justify-between items-center"
+        (click)="toggleExpansion('infor_pao2')">
+        <b class="text-justify">
+            Informe de PAO 2
+        </b>
+        <b class="ml-2 text-2xl"> &gt; </b>
+    </div>
+    <section *ngIf="expandedState['infor_pao2']">
+        <app-pdf-viewer [src]="'/assets/modules/vinculación/presencia-comunidad/PRESENCIA EN LA COMUNIDAD PAO 2.pdf'"></app-pdf-viewer>
+    </section>
+</div>
+
+<div class="border-t-4 border-gray-300 my-5" style="margin-left: 15%; margin-right: 15%;"></div>
+<div class="gap-8 text-justify mb-5" style="margin-left: 15%; margin-right: 15%;">
+    <div class="text-3xl cursor-pointer text-justify flex justify-between items-center"
+        (click)="toggleExpansion('dis_esp_inst')">
+        <b class="text-justify">
+            Disposición de Espacios institucionales
+        </b>
+        <b class="ml-2 text-2xl"> &gt; </b>
+    </div>
+    <section *ngIf="expandedState['dis_esp_inst']">
+        <div class="gap-8 justify-center">
+            El Instituto Superior Tecnológico Superarse promueve la integración de la comunidad poniendo a disposición
+            de
+            la comunidad los espacios institucionales.
+        </div>
+        <div class="flex flex-row gap-8 justify-center">
+            <div class="w-full flex flex-col gap-4 text-justify">
+                <img src="/assets/modules/vinculación/Disposición de Espacios institucionales.png" style="width: 100%;">
+            </div>
+        </div>
+        <div class=" mt-2 mb-2 text-2xl cursor-pointer text-justify flex justify-between items-center">
+            <b class="text-justify">
+                Eventos en los que ha participado
+            </b>
+        </div>
+        <!-- comentado hasta que den pdf -->
+        <!-- <app-pdf-viewer [src]="''"></app-pdf-viewer> -->
+    </section>
+</div>
+<div class="border-t-4 border-gray-300 my-5" style="margin-left: 15%; margin-right: 15%;"></div>
+
+<div class="gap-8 text-justify mb-5" style="margin-left: 15%; margin-right: 15%;">
+    <div class="text-3xl cursor-pointer text-justify flex justify-between items-center"
+        (click)="toggleExpansion('part_vid_soc_cul')">
+        <b class="text-justify">
+            Participación en la vida social y cultural
+        </b>
+        <b class="ml-2 text-2xl"> &gt; </b>
+    </div>
+    <section *ngIf="expandedState['part_vid_soc_cul']">
+        <div class="gap-8 justify-center">
+            El Instituto Superior Tecnológico Superarse participa en eventos culturales, deportivos, las artes, las
+            actividades festivas tradicionales del territorio, etc.
+        </div>
+        <div class="flex flex-row gap-8 justify-center">
+            <div class="w-full flex flex-col gap-4 text-justify">
+                <img src="/assets/modules/vinculación/Participación en la vida social y cultural.png"
+                    style="width: 100%;">
+            </div>
+        </div>
+        <div class=" mt-2 mb-2 text-2xl cursor-pointer text-justify flex justify-between items-center">
+            <b class="text-justify">
+                Eventos en los que ha participado
+            </b>
+        </div>
+        <!-- comentado hasta que den pdf -->
+        <!-- <app-pdf-viewer [src]="''"></app-pdf-viewer> -->
+    </section>
+</div>
+<div class="border-t-4 border-gray-300 my-5" style="margin-left: 15%; margin-right: 15%;"></div>
+
+<div class="gap-8 text-justify mb-5" style="margin-left: 15%; margin-right: 15%;">
+    <div class="text-3xl cursor-pointer text-justify flex justify-between items-center"
+        (click)="toggleExpansion('cont-des-int-pro')">
+        <b class="text-justify">
+            Contribución al desarrollo de intereses profesionales
+        </b>
+        <b class="ml-2 text-2xl"> &gt; </b>
+    </div>
+    <section *ngIf="expandedState['cont-des-int-pro']">
+        <div class="gap-8 justify-center">
+            El Instituto Superior Tecnológico Superarse realiza actividades y programas destinados a estudiantes de
+            bachillerato y jóvenes egresados, brindándoles información sobre las carreras con el fin de ayudarles a
+            tomar
+            decisiones informadas sobre su futuro académico y profesional.
+        </div>
+        <div class="flex flex-row gap-8 justify-center">
+            <div class="w-1/2 flex flex-col gap-4 text-justify">
+                <img src="/assets/modules/vinculación/Contribución al desarrollo de intereses profesionales 1.png"
+                    style="width: 100%;">
+            </div>
+            <div class="w-1/2 flex flex-col gap-4 text-justify">
+                <img src="/assets/modules/vinculación/Contribución al desarrollo de intereses profesionales 2.png"
+                    style="width: 100%;">
+            </div>
+        </div>
+        <div class=" mt-2 mb-2 text-2xl cursor-pointer text-justify flex justify-between items-center">
+            <b class="text-justify">
+                Eventos en los que ha participado
+            </b>
+        </div>
+        <!-- comentado hasta que den pdf -->
+        <!-- <app-pdf-viewer [src]="''"></app-pdf-viewer> -->
+    </section>
+</div>
+<div class="border-t-4 border-gray-300 my-5" style="margin-left: 15%; margin-right: 15%;"></div>
+
+<vicarti-footer class="block" style="margin-top:64px;"></vicarti-footer>
+<app-whatsapp></app-whatsapp>
