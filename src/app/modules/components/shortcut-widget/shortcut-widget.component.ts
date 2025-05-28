@@ -23,6 +23,11 @@ export class ShortcutWidgetComponent {
             value: 'mailto:matriculas@superarse.edu.ec'
         },
         {
+            name: 'BECAUSE HE IS NICE',
+            type: 'link',
+            value: 'https://becasuperarse.ec'
+        },
+        {
             name: 'Q10',
             type: 'link',
             value: 'https://superarse.q10.com'
