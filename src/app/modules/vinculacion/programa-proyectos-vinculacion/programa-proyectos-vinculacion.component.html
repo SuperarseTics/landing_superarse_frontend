@@ -1,0 +1,117 @@
+<vicarti-shortcut-widget></vicarti-shortcut-widget>
+<vicarti-menu-widget></vicarti-menu-widget>
+<h2 class="font-semibold text-5xl py-8 mt-4 text-[#1283C6]" style="margin-left: 15%; margin-right: 15%;">
+    Programas y Proyectos de Vinculación
+</h2>
+
+<ul class="list-outside list-none mb-2" style="margin-left: 15%; margin-right: 15%;">
+    <li *ngFor="let section of data">
+        <div *ngIf="section.type == 'redirect'" [id]="'content-' + section.id" class="pdf-content mt-4">
+            <div class="font-semibold cursor-pointer text-3xl text-justify flex justify-between items-center">
+                <b class="text-justify">
+                    <a [href]="section.value">{{ section.name }}</a>
+                </b>
+                <b class="ml-2  text-2xl"> &gt; </b>
+            </div>
+        </div>
+        <div *ngIf="section.type == 'text'" [id]="'content-' + section.id" class="pdf-content mt-4">
+            <div class="font-semibold cursor-pointer text-3xl text-justify flex justify-between items-center">
+                <b class="text-justify">
+                    {{ section.name }}
+                </b>
+                <b class="ml-2  text-2xl"> &gt; </b>
+            </div>
+        </div>
+        <div *ngIf="section.type == 'list-urls'" [id]="'content-' + section.id" class="pdf-content mt-4">
+            <div class="font-semibold text-3xl cursor-pointer text-justify flex justify-between items-center" (click)="toggleExpansion(section.id)">
+                <b class="text-justify">
+                    {{ section.name }}
+                </b>
+                <b class="ml-2  text-2xl"> &gt; </b>
+            </div>
+            <div *ngIf="expandedState[section.id]">
+                <div *ngFor="let files of section.files" class="gap-8 mt-4" style="margin-left: 2%;">
+                    <div class="text-2xl cursor-pointer text-justify flex justify-between items-center"
+                        (click)="toggleExpansion(files.id)">
+                        <b class="text-justify">
+                            {{ files.name }}
+                        </b>
+                        <b class="ml-2  text-2xl"> &gt; </b>
+                    </div>
+                    <div *ngIf="expandedState[files.id] && files.type =='download'" [id]="'content-' + files.id"
+                        class="pdf-content mt-4">
+                        <table class="table-fixed" style="width: 100%;">
+                            <tbody>
+                                <tr *ngFor="let file of files.files">
+                                    <td>
+                                        <div class="gap-8 text-justify text-xl">
+                                            <div class="mt-5 text-center">
+                                                <a [href]="file.src"
+                                                    class="hover:text-[#FBBF2D] hover:bg-white px-6 py-3 bg-[#1283C6] text-white font-semibold rounded-lg shadow-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75">
+                                                    {{ file.name }}
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div *ngIf="section.type =='list-sublist'" [id]="'content-' + section.id" class="pdf-content mt-2">
+            <div class="font-semibold text-3xl cursor-pointer text-justify flex justify-between items-center" (click)="toggleExpansion(section.id)">
+                <b class="text-justify">
+                    {{ section.name }}
+                </b>
+                <b class="ml-2  text-2xl"> &gt; </b>
+            </div>
+            <div *ngIf="expandedState[section.id]" class="mt-4">
+                <section *ngFor="let sublist of section.files" style="margin-left: 2%;" class="text-justify justify-between mb-4">
+                    <div class="font-semibold cursor-pointer text-justify flex justify-between items-center"
+                        (click)="redirigir('proyecto', sublist.name, sublist.files, sublist.logo)">
+                        <b class="text-justify font-semibold text-2xl">
+                            {{ sublist.name }}
+                        </b>
+                        <b class="ml-2  text-2xl"> &gt; </b>
+                    </div>
+                </section>
+            </div>
+        </div>
+        <div *ngIf="section.type =='list-pdfs'" [id]="'content-' + section.id" class="pdf-content mt-2">
+            <div class="font-semibold text-3xl cursor-pointer text-justify flex justify-between items-center" (click)="toggleExpansion(section.id)">
+                <b class="text-justify">
+                    {{ section.name }}
+                </b>
+                <b class="ml-2  text-2xl"> &gt; </b>
+            </div>
+            <div *ngIf="expandedState[section.id]" class="mt-4">
+                <section *ngFor="let pdf of section.files" style="margin-left: 2%;" class="text-justify justify-between mb-4">
+                    <div class="font-semibold text-2xl cursor-pointer text-justify flex justify-between items-center" (click)="toggleExpansionPFDs(pdf.id)">
+                        <b class="text-justify">
+                            {{ pdf.name }}
+                        </b>
+                        <b class="ml-2  text-2xl"> &gt; </b>
+                    </div>
+                    <div *ngIf="expandedStatePDFs[pdf.id]" class="mt-4">
+                        <app-pdf-viewer [src]="pdf.src"></app-pdf-viewer>
+                    </div>
+                </section>
+            </div>
+        </div>
+        <div *ngIf="section.type == 'pdf'" [id]="'content-' + section.id" class="pdf-content mt-4">
+            <div class="font-semibold text-3xl cursor-pointer text-justify flex justify-between items-center" (click)="toggleExpansionPFDs(section.id)">
+                <b class="text-justify">
+                    {{ section.name }}
+                </b>
+                <b class="ml-2  text-2xl"> &gt; </b>
+            </div>
+            <app-pdf-viewer *ngIf="expandedStatePDFs[section.id]" [src]="section.value"></app-pdf-viewer>
+        </div>
+        <div class="border-t-4 border-gray-300 my-5"></div>
+    </li>
+</ul>
+
+<vicarti-footer class="block" style="margin-top:64px;"></vicarti-footer>
+<app-whatsapp></app-whatsapp>

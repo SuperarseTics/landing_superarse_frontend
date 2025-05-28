@@ -1,0 +1,25 @@
+<vicarti-shortcut-widget></vicarti-shortcut-widget>
+<vicarti-menu-widget></vicarti-menu-widget>
+
+<div style="margin-left: 15%; margin-right: 15%;">
+    <h2 class="font-semibold text-5xl py-8 mt-4 text-[#1283C6]">
+        Proyectos de Investigación e Innovación en el Tecnológico Superarse
+    </h2>
+    <div *ngFor="let item of data" class="gap-8 text-justify text-xl mb-5">
+        <div class="text-3xl cursor-pointer text-justify flex justify-between items-center"
+            (click)="toggleExpansion(item.id)">
+            <b class="text-justify">
+                {{ item.name }}
+            </b>
+            <b class="ml-2 text-2xl"> &gt; </b>
+        </div>
+        <section *ngIf="expandedState[item.id]">
+            <app-pdf-viewer
+                [src]="item.src"></app-pdf-viewer>
+        </section>
+        <div class="border-t-4 border-gray-300 my-5"></div>
+    </div>
+</div>
+
+<vicarti-footer class="block" style="margin-top:64px;"></vicarti-footer>
+<app-whatsapp></app-whatsapp>

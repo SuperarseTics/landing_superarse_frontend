@@ -1,0 +1,32 @@
+<section class="w-full flex justify-center px-4 py-16" (click)="action()">
+    @if(!isCounter){
+            <div class="mx-auto grid gap-8" [style.grid-template-columns]="'repeat('+listItems.length/(screenWidth <= 835 ? 2 : 1)+', minmax(0, 2fr))'">
+            @for (item of listItems; track $index) {
+                <div class="flex flex-col items-center gap-4 hover:bg-gray-100 p-4">
+                    <img class="w-20 hover:translate-y-3 hover:transition-all hover:ease-in-out hover:duration-300" [src]="item.iconUrl" alt="icon">
+                    @if (item.labelUrl != '') {
+                        <a class=" hover:underline text-center text-[#1283C6] font-semibold text-base" [href]="item.labelUrl">{{item.label}}</a>
+                    }@else {
+                        <span class="font-semibold text-base text-center text-[#1283C6]">{{item.label}}</span>
+                    }
+                </div>
+            }
+            </div>
+        }@else {
+            <div class="mx-auto grid gap-8" [style.grid-template-columns]="'repeat('+counterItems.length/(screenWidth <= 835 ? 2 : 1)+', minmax(0, 2fr))'">
+            @for (item of counterItems; track $index) {
+                <div class="flex flex-col items-center justify-center gap-4 hover:bg-gray-100 p-4">
+                    <span class="text-6xl font-bold"[ngClass]="{
+                        'text-[#1283C6]': item.id === 1,
+                        'text-[#8DBF31]': item.id === 2,
+                        'text-[#FBBF2D]': item.id === 3,
+                        'text-[#EF7A15]': item.id === 4
+                      }" >{{item.value}}</span>
+                    <span class="text-2xl text-center font-semibold  text-[#616160]">{{item.label}}</span>
+
+                </div>
+            }
+            </div>
+        }
+
+</section>

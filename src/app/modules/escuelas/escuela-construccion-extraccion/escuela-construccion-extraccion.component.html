@@ -1,0 +1,213 @@
+<vicarti-shortcut-widget></vicarti-shortcut-widget>
+<vicarti-menu-widget></vicarti-menu-widget>
+
+<div id="body">
+    <h2 class="font-semibold text-5xl py-8 mt-4 text-[#EF7A15] " style="margin-left: 15%; margin-right: 15%;">
+        Escuela de Construcción y Extracción Sostenible
+    </h2>
+    <section *ngIf="title == 'Topografia' || title == 'TODOS'">
+        <div class="gap-8 text-justify mb-5" style="margin-left: 15%; margin-right: 15%;">
+            <b class="font-semibold text-3xl" id="TOPOGRAFIA">Tecnología Superior en Topografía</b>
+            <div class="flex flex-row gap-8 justify-center">
+                <div class="w-2/6 flex flex-col gap-4 text-justify">
+                    <img src="../../../assets/modules/escuela-construccion-extraccion/PORTADA TOPOGRAFIA.png"
+                        style="width: 100%;">
+                </div>
+                <div class="w-4/6 flex flex-col gap-4 items-center justify-center">
+                    <p class="mb-2">
+                        <b class="font-semibold text-1xl">Resolución: </b>RPC-SO-12-No.320-2021
+                        <br>
+                        <b class="font-semibold text-1xl">Duración: </b>2 Años
+                        <br>
+                        <b class="font-semibold text-1xl">Modalidad: </b>Hibrida
+                        <br>
+                        <a (click)="scrollToMalla('mallaTopo')"><b class="font-semibold text-1xl">Malla Curricular:
+                            </b>4
+                            Niveles</a>
+                        <br>
+                        <label class="text-justify">
+                            El Tecnólogo en Topografía es un profesional con sólidos conocimientos teóricos,
+                            científicos,
+                            prácticos y técnicos en topografía y geodesia. Está capacitado para manejar instrumentos
+                            especializados y satisfacer las necesidades de diversos servicios en el área de la
+                            construcción,
+                            adaptándose a diferentes niveles de complejidad. Su labor incluye el levantamiento
+                            topográfico y
+                            la
+                            representación gráfica detallada de la superficie terrestre, aspectos fundamentales para el
+                            diseño y
+                            planificación de obras civiles.
+                        </label>
+                    </p>
+                    <div class="gap-8 text-justify text-xl" style="margin-left: 15%; margin-right: 15%;">
+                        <div class="text-center font-semibold">
+                            ¿Quieres comunicarte con un asesor?
+                        </div>
+                        <div class="mt-5 text-center">
+                            <a target="_blank"
+                                href="https://api.whatsapp.com/send?phone=593995901732&text=Saludos%2C+deseo+mas+informaci%C3%B3n+sobre+la+oferta+acad%C3%A9mica+de+la+escuela+de+construcción+y+extracción+sostenible+para+hacer+una+Tecnología+Superior+en+Topografía.+Gracias%21"
+                                class="hover:text-[#FBBF2D] hover:bg-white px-6 py-3 bg-[#EF7A15] text-white font-semibold rounded-lg shadow-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75">
+                                Haz clic aquí
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="gap-8 text-justify mb-5" style="margin-left: 15%; margin-right: 15%;">
+            <b class="font-semibold text-2xl">Competencia Profesional</b>
+            <p class="mb-2">
+                El Tecnólogo en Topografía es un profesional con sólidos conocimientos teóricos, científicos, prácticos
+                y
+                técnicos en topografía y geodesia. Está capacitado para manejar instrumentos especializados y satisfacer
+                las
+                necesidades de diversos servicios en el área de la construcción, adaptándose a diferentes niveles de
+                complejidad. Su labor incluye el levantamiento topográfico y la representación gráfica detallada de la
+                superficie terrestre, aspectos fundamentales para el diseño y planificación de obras civiles.
+            </p>
+        </div>
+        <div class="gap-8 text-justify mb-5" style="margin-left: 15%; margin-right: 15%;">
+            <b class="font-semibold text-2xl">Campo Ocupacional</b>
+            <p class="mb-2">
+                Empresas Constructoras, Mineras, Agrícolas, Forestales, Sanitarias, Eléctricas, Telecomunicación y
+                Comerciales.
+            </p>
+            <p class="mb-2">
+                IGN.
+            </p>
+            <p class="mb-2">
+                Gobiernos Regionales.
+            </p>
+            <p class="mb-2">
+                Ministerios.
+            </p>
+            <p class="mb-2">
+                Prestación de servicios profesionales como: topógrafo, asesor, consultor y fiscalizador y técnico de
+                obra.
+            </p>
+        </div>
+        <div class="gap-8 text-justify mb-5" #mallaTopo id="mallaTopo"
+            style="margin-left: 15%; margin-right: 15%;">
+            <b class="font-semibold text-2xl">Malla Curricular</b>
+            <app-pdf-viewer [showDownloadButton]="true" src="/assets/modules/escuelas-mallas-pdfs/Topografia.pdf"></app-pdf-viewer>
+            <!-- <div class="flex justify-center">
+                <img src="../../../assets/modules/escuela-construccion-extraccion/MALLA TOPOGRAFIA.png"
+                    style="width:80%;">
+            </div>
+            <div class="mt-5 text-center">
+                <a href="../../../assets/modules/escuela-construccion-extraccion/MALLA Tecnólogo en Topografía.pdf"
+                    download
+                    class="hover:text-[#FBBF2D] hover:bg-white px-6 py-3 bg-[#EF7A15] text-white font-semibold rounded-lg shadow-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75">
+                    Descargar malla
+                </a>
+            </div> -->
+        </div>
+    </section>
+
+    <div *ngIf="title == 'TODOS'" class="border-t-4 border-gray-300 my-5" style="margin-left: 15%; margin-right: 15%;">
+    </div>
+
+    <section *ngIf="title == 'Mineria' || title == 'TODOS'">
+        <div class="gap-8 text-justify mb-5" style="margin-left: 15%; margin-right: 15%;">
+            <b class="font-semibold text-3xl" id="MINERIA">Tecnólogo en Minería</b>
+            <div class="flex flex-row gap-8 justify-center">
+                <div class="w-2/6 flex flex-col gap-4 text-justify">
+                    <img src="../../../assets/modules/escuela-construccion-extraccion/PORTADA MINERIA.png"
+                        style="width: 100%;">
+                </div>
+                <div class="w-4/6 flex flex-col gap-4 items-center justify-center">
+                    <p class="mb-2">
+                        <b class="font-semibold text-1xl">Resolución: </b>RPC-SO-50-No.796-2022
+                        <br>
+                        <b class="font-semibold text-1xl">Duración: </b>2 Años
+                        <br>
+                        <b class="font-semibold text-1xl">Modalidad: </b>Híbrida
+                        <br>
+                        <a (click)="scrollToMalla('mallaMineria')"><b class="font-semibold text-1xl">Malla Curricular:
+                            </b>4
+                            Niveles</a>
+                        <br>
+                        <label class="text-justify">
+                            El Tecnólogo en Minería es un profesional con sólidos conocimientos teóricos y prácticos en
+                            los
+                            procesos de prospección, exploración y explotación minera. Además, posee estrategias
+                            técnicas
+                            para
+                            el aprovechamiento sostenible de minerales, contribuyendo al desarrollo socioeconómico del
+                            país.
+                            Su
+                            enfoque incluye la implementación de soluciones desde diversas perspectivas para garantizar
+                            los
+                            derechos ambientales y fomentar una sociedad participativa mediante innovadoras estrategias
+                            y
+                            técnicas.
+                        </label>
+                    </p>
+                    <div class="gap-8 text-justify text-xl" style="margin-left: 15%; margin-right: 15%;">
+                        <div class="text-center font-semibold">
+                            ¿Quieres comunicarte con un asesor?
+                        </div>
+                        <div class="mt-5 text-center">
+                            <a target="_blank"
+                                href="https://api.whatsapp.com/send?phone=593995901732&text=Saludos%2C+deseo+mas+informaci%C3%B3n+sobre+la+oferta+acad%C3%A9mica+de+la+escuela+de+construcción+y+extracción+sostenible+para+ser+Tecnólogo+en+Minería.+Gracias%21"
+                                class="hover:text-[#FBBF2D] hover:bg-white px-6 py-3 bg-[#EF7A15] text-white font-semibold rounded-lg shadow-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75">
+                                Haz clic aquí
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="gap-8 text-justify mb-5" style="margin-left: 15%; margin-right: 15%;">
+            <b class="font-semibold text-2xl">Perfil de Egreso</b>
+            <p class="mb-2">
+                Controlar las operaciones mineras, así como también las operaciones de fortificación, ventilación en
+                minas
+                subterráneas.
+            </p>
+            <p class="mb-2">
+                Sera capaz de preparar muestras para análisis granulométricos y químicos de muestras de rocas y
+                minerales y
+                realizar levantamiento topográficos y replanteos según requerimientos de la mina, mediante el uso de la
+                tecnología y de sistemas de información.
+            </p>
+            <p class="mb-2">
+                Además, aplicará herramienta de planificación y control de operaciones mineras en el ámbito inherente a
+                su
+                profesión, la normativa vigente de seguridad industrial y protección al medio ambiente, con competencias
+                técnicas propias del área y las relacionadas con la adaptación, comunicación y trabajo en equipo, con
+                dominio de
+                conocimientos sobre cómo se desarrollan los procesos geológicos en la corteza terrestre, demostrando
+                flexibilidad y adaptabilidad en diferentes entornos laborales.
+            </p>
+        </div>
+        <div class="gap-8 text-justify mb-5" style="margin-left: 15%; margin-right: 15%;">
+            <b class="font-semibold text-2xl">Campo Ocupacional</b>
+            <p class="mb-2">
+                El Tecnólogo en Minería podrá laborar en el sector público y privado, apoyando en actividades relativas
+                al
+                campo
+                de la Minería, en áreas productivas y de desarrollo del país, además tendrá la capacidad de analizar la
+                realidad
+                política, económica, social y cultural, con el apoyo de recursos tecnológicos innovadores.
+            </p>
+        </div>
+        <div class="gap-8 text-justify mb-5" #mallaMineria id="mallaMineria"
+            style="margin-left: 15%; margin-right: 15%;">
+            <b class="font-semibold text-2xl">Malla Curricular</b>
+            <app-pdf-viewer [showDownloadButton]="true" src="/assets/modules/escuelas-mallas-pdfs/Mineria.pdf"></app-pdf-viewer>
+            <!-- <div class="flex justify-center">
+                <img src="../../../assets/modules/escuela-construccion-extraccion/MALLA MINERIA.png" style="width:80%;">
+            </div>
+            <div class="mt-5 text-center">
+                <a href="../../../assets/modules/escuela-construccion-extraccion/MALLA Tecnólogo en Minería.pdf"
+                    download
+                    class="hover:text-[#FBBF2D] hover:bg-white px-6 py-3 bg-[#EF7A15] text-white font-semibold rounded-lg shadow-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75">
+                    Descargar malla
+                </a>
+            </div> -->
+        </div>
+    </section>
+</div>
+<vicarti-footer class="block" style="margin-top:64px;"></vicarti-footer>
+<app-whatsapp></app-whatsapp>

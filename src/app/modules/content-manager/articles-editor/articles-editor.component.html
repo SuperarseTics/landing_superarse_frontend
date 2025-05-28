@@ -1,0 +1,59 @@
+<div class="card">
+    <button pButton pRipple type="button" label="Regresar" class="p-button-text p-button-plain" icon="pi pi-arrow-left" [routerLink]="['/content-manager/articles']"></button>
+    <h4 class="font-semibold">Editor de Artículos</h4>
+    <div class="flex flex-row">
+        <div class="flex flex-column gap-2" style="width: 50%;">
+            <label for="texto" class="font-semibold">Título Artículo</label>
+            <input class="w-full md:w-30rem mb-5" pInputText />
+        </div>
+        <div class="flex flex-column gap-2" style="width: 50%;">
+            <label for="texto" class="font-semibold">Descripción del Artículo</label>
+            <input class="w-full md:w-30rem mb-5" pInputText />
+        </div>
+        <div class="flex flex-column gap-2" style="width: 50%;">
+            <label for="texto" class="font-semibold">URL</label>
+            <input class="w-full md:w-30rem mb-5" pInputText />
+        </div>
+    </div>
+    <div class="flex flex-column gap-2">
+        <label for="texto" class="font-semibold">Imagen de Fondo de la página</label>
+        <p-dropdown [options]="hslideImages" [(ngModel)]="bgImage" placeholder="Selecciona una imagen de fondo" appendTo="body">
+            <ng-template let-group pTemplate="item">
+                <div class="flex align-items-center">
+                    <img [src]="group.url" style="width: 60px" /> &nbsp;
+                    <span style="width: 60px">{{ group.label }}</span>
+                </div>
+            </ng-template>
+        </p-dropdown>
+
+    </div>
+    <h4 class="font-semibold">Editor de Contenido</h4>
+    <form [formGroup]="formGroup">
+        <p-editor formControlName="text" [style]="{ height: '320px' }" />
+    </form>
+    <section class="mt-4">
+        <div class="flex flex-column mt-4  w-full">
+            <h4 class="text-lg font-semibold mb-0 my-4">SEO</h4>
+            <div class="flex flex-row">
+                <div class="flex flex-column gap-2" style="width: 50%;">
+                    <label for="texto" class="font-semibold">Meta Title</label>
+                    <input class="w-full md:w-30rem mb-5" pInputText (keydown.space)="$event.stopPropagation()" />
+                </div>
+                <div class="flex flex-column gap-2" style="width: 50%;">
+                    <label for="texto" class="font-semibold">Meta Description</label>
+                    <textarea id="description" pInputText (keydown.space)="$event.stopPropagation()" area class="w-full md:w-30rem mb-5"  required rows="3" cols="20"></textarea>
+                </div>
+            </div>
+            <div class="flex flex-row">
+                <div class="flex flex-column gap-2" style="width: 50%;">
+                    <label for="texto" class="font-semibold">Meta Keywords</label>
+                    <textarea id="description" pInputText (keydown.space)="$event.stopPropagation()" area class="w-full md:w-30rem mb-5"  required rows="3" cols="20"></textarea>
+                </div>
+                <div class="flex flex-column gap-2" style="width: 50%;">
+                    <label for="texto" class="font-semibold">Meta Robots</label>
+                    <textarea id="description" pInputText (keydown.space)="$event.stopPropagation()" area class="w-full md:w-30rem mb-5"  required rows="3" cols="20"></textarea>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

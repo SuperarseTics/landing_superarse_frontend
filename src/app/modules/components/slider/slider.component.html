@@ -1,0 +1,29 @@
+<div class="w-full">
+    <swiper-container [config]="swiperConfig">
+        <ng-container *ngFor="let item of gallery">
+            <swiper-slide class="flex relative">
+            <!-- <swiper-slide class="h-[70vh] flex relative"> -->
+                <ng-container *ngIf="item.isVideo; else imageTemplate">
+                    <video class="w-full h-full object-cover" controls autoplay loop muted playsinline>
+                        <source [src]="item.url" type="video/mp4">
+                        Tu navegador no soporta la reproducción de videos.
+                    </video>
+                </ng-container>
+                <ng-template #imageTemplate>
+                    <a *ngIf="item.redirect != ''" [href]='item.redirect'>
+                        <img class="w-full h-full object-cover" [src]="item.url" alt="some img">
+                    </a>
+                    <img *ngIf="item.redirect == ''" class="w-full h-full object-cover" [src]="item.url" alt="some img">
+                    <div *ngIf="item.cardTitle"
+                        class="absolute flex flex-col gap-4 top-0 right-0 w-1/4 h-1/2 mt-[10%] mr-[10%] bg-blue-500 opacity-90 p-4 justify-center items-center text-white rounded-sm">
+                        <p class="text-xl m-0">{{item.cardTitle}}</p>
+                        <h2 class="text-3xl text-center font-semibold text-inherit m-0">{{item.cardBigText}}</h2>
+                        <p class="text-xl m-0">{{item.cardHashtag}}</p>
+                        <a [href]="item.urlButton"
+                            class="text-lg font-semibold bg-[#8DBF31] px-3 py-2 rounded-full text-inherit hover:text-inherit hover:!transition-all hover:ease-in-out border-2 hover:bg-transparent border-solid bg-[#8DBF31] m-0">{{item.buttonText}}</a>
+                    </div>
+                </ng-template>
+            </swiper-slide>
+        </ng-container>
+    </swiper-container>
+</div>

@@ -1,0 +1,75 @@
+<vicarti-shortcut-widget></vicarti-shortcut-widget>
+<vicarti-menu-widget></vicarti-menu-widget>
+
+<div id="body" style="margin-left: 15%; margin-right: 15%;">
+    <h2 class="font-semibold text-5xl py-8 mt-4 text-[#1283C6] ">
+        Evaluación al Docente
+    </h2>
+    <div class="flex flex-row gap-8 justify-center mb-5">
+        <div class="gap-4 text-justify">
+            <b class="font-bold text-2xl text-black">
+                En el Instituto Superior Tecnológico Superarse, la búsqueda constante de la excelencia académica impulsa
+                nuestra cultura de innovación y mejora continua
+            </b>
+            <p class="mb-2">
+                Comprometidos con la calidad de la educación, hemos implementado un sistema de evaluación docente,
+                permitiendo a nuestros estudiantes evaluar a sus profesores y proporcionar datos valiosos para asegurar
+                la calidad de la enseñanza y promover el desarrollo profesional de nuestros docentes.
+            </p>
+        </div>
+    </div>
+    <div class="flex flex-row gap-8 justify-center mb-5">
+        <div class="gap-4 text-justify">
+            <b class="font-bold text-2xl text-black">
+                Nuestros Objetivos:
+            </b>
+            <p>
+                La evaluación docente es un pilar fundamental para:
+            </p>
+            <ul class="my-1 list-disc p-0 flex text-900 flex-column" style="margin-left: 3%; margin-right: 3%;">
+                <li class="py-2">
+                    <span class="font-semibold">Elevar la calidad académica:</span> Identificar fortalezas y áreas de mejora en la práctica docente, asegurando una educación de vanguardia.
+                </li>
+                <li class="py-2">
+                    <span class="font-semibold">Facilitar la toma de decisiones estratégicas:</span> Detectar tendencias y necesidades emergentes para una gestión académica proactiva.
+                </li>
+                <li class="py-2">
+                    <span class="font-semibold">Fomentar el crecimiento profesional del docente:</span> Proporcionar herramientas y recursos para el desarrollo continuo de sus competencias pedagógicas y tecnológicas.
+                </li>
+                <li class="py-2">
+                    <span class="font-semibold">Promover la participación activa de los estudiantes:</span> Incluir a los estudiantes como parte activa del proceso de mejora continua.
+                </li>
+                <li class="py-2">
+                    <span class="font-semibold">Asegurar la pertinencia de la formación:</span> Ajustar los contenidos y metodologías a las demandas del sector productivo.
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="gap-8 justify-center mb-5">
+        <div class="gap-4 text-justify">
+            <b class="font-bold text-2xl text-black">
+                En el Tecnológico Superarse innovamos para mejorar la calidad académica.
+            </b>
+            <p class="mb-2">
+                Información Adicional:
+            </p>
+            <div *ngFor="let item of ulrs" class="pdf-container">
+                <div class="gap-8">
+                    <div class="font-semibold text-lg cursor-pointer text-justify flex justify-between items-center"
+                        (click)="toggleExpansion(item.id)">
+                        <b class="text-justify">
+                            {{ item.name }}
+                        </b>
+                        <b class="ml-2 text-2xl"> &gt; </b>
+                    </div>
+                    <div *ngIf="expandedState[item.id]" [id]="'content-' + item.id" class="pdf-content mt-4">
+                        <app-pdf-viewer *ngIf="item.src" [src]="item.src"></app-pdf-viewer>
+                    </div>
+                </div>
+                <div class="border-t-2 border-gray-300 my-5"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<vicarti-footer class="block" style="margin-top:64px;"></vicarti-footer>
+<app-whatsapp></app-whatsapp>

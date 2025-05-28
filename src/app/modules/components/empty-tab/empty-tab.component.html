@@ -1,0 +1,10 @@
+<vicarti-shortcut-widget></vicarti-shortcut-widget>
+<vicarti-menu-widget></vicarti-menu-widget>
+<h2 class="font-semibold text-5xl py-8 mt-4 text-[#1283C6] " style="margin-left: 15%; margin-right: 15%;">{{ title }}</h2>
+<div class="gap-8 text-justify mb-5" style="margin-left: 15%; margin-right: 15%;">
+    <div *ngIf="type == 'pdf'" id="pdf-container">
+        <app-pdf-viewer [src]="src"></app-pdf-viewer>
+    </div>
+</div>
+<vicarti-footer class="block" style="margin-top:64px;"></vicarti-footer>
+<app-whatsapp></app-whatsapp>

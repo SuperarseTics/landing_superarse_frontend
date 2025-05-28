@@ -1,0 +1,12 @@
+<div class="m-4 p-8 rounded-lg border-1 border-solid border-gray-100 shadow-lg shadow-black/20 hover:bg-gray-50">
+    <label class="font-semibold text-base text-[#EF7A15] mb-2">Explora los items de: </label> <br>
+    <h2 class="font-semibold text-3xl text-[#1283C6] mb-4">
+        {{ submenu }}
+    </h2>
+    <section dir="ltr" *ngFor="let item of transparenciaItems" class="mx-4 pb-1 text-base group/item">
+        <a class="h-full transition duration-200 hover:text-[#FBBF2D] hover:text-xl hover:ms-4" [href]="item.value">
+            <span>{{ item.name }}</span>
+            <img class="group/edit invisible group-hover/item:visible h-0 w-full object-cover group-hover/item:h-[25vh] transition-all duration-200" [src]="item.img" />
+        </a>
+    </section>
+</div>

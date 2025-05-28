@@ -1,0 +1,129 @@
+<div class="card">
+    <button pButton pRipple type="button" label="Regresar" class="p-button-text p-button-plain" icon="pi pi-arrow-left" [routerLink]="['/content-manager/pages']"></button>
+    <h4 class="font-semibold">Editor de Página - {{currentPageInEdition}}</h4>
+    <div class="card">
+        <div class="flex flex-row">
+            <div class="flex flex-column gap-2" style="width: 50%;">
+                <label for="texto" class="font-semibold">Nombre Página</label>
+                <input class="w-full md:w-30rem mb-5" pInputText />
+            </div>
+            <div class="flex flex-column gap-2" style="width: 50%;">
+                <label for="texto" class="font-semibold">URL Página</label>
+                <input class="w-full md:w-30rem mb-5" pInputText />
+            </div>
+            <div class="flex flex-column gap-2">
+                <label for="texto" class="font-semibold">Imagen de Fondo de la página</label>
+                <p-dropdown [options]="hslideImages" [(ngModel)]="bgImage" placeholder="Selecciona una imagen de fondo" appendTo="body">
+                    <ng-template let-group pTemplate="item">
+                        <div class="flex align-items-center">
+                            <img [src]="group.url" style="width: 60px" /> &nbsp;
+                            <span style="width: 60px">{{ group.label }}</span>
+                        </div>
+                    </ng-template>
+                </p-dropdown>
+
+            </div>
+        </div>
+        <div class="card">
+            <p-orderList [value]="pageWidgets" [(selection)]="selectedItems"  [listStyle]="{ 'max-height': '30rem' }"  [dragdrop]="true" [header]="'Widgets insertados en la página ('+pageWidgets.length+')' ">
+                <ng-template let-navItem pTemplate="items">
+                    <div class="flex flex-wrap p-2 align-items-center gap-8">
+                        <div class="flex-1 flex flex-row gap-2 ">
+                            <div class="flex flex-column gap-2 w-full                                             ">
+                                <label for="texto">{{navItem.name}}</label>
+                                    <p-button label="Insertar slider" styleClass="p-button-link" (onClick)="insertSlide(navItem)"></p-button>
+                                    <p-button label="Eliminar Widget" styleClass="p-button-danger" (onClick)="removeNWidgetItem()"></p-button>
+                                    @if(navItem && navItem.type == 'hero-slider'){
+                                        @for (hslide of navItem.properties.slides; track $index) {
+                                            <div class="card">
+                                                <div class="flex flex-column gap-2 w-full">
+                                                    <div class="flex flex-column gap-2 mt-3">
+                                                        <label for="texto">Imagen del slider</label>
+                                                        <p-dropdown [options]="hslideImages" [(ngModel)]="hslide.url" placeholder="Selecciona una imagen para el slider" appendTo="body">
+                                                            <ng-template let-group pTemplate="item">
+                                                                <div class="flex align-items-center">
+                                                                    <img [src]="group.url" style="width: 60px" /> &nbsp;
+                                                                    <span style="width: 60px">{{ group.label }}</span>
+                                                                </div>
+                                                            </ng-template>
+                                                        </p-dropdown>
+                                    
+                                                    </div>
+                                                    <div class="flex flex-row gap-4">
+                                                        <div class="flex flex-column" style="width: 50%;">
+                                                            <label for="texto">Título</label>
+                                                            <input class="w-full md:w-30rem mb-5" pInputText (keydown.space)="$event.stopPropagation()"   [(ngModel)]="hslide.cardTitle" /> 
+                                                        </div>
+                                                        <div class="flex flex-column" style="width: 50%;">
+                                                            <label for="texto">Énfasis</label>
+                                                            <input class="w-full md:w-30rem mb-5" pInputText (keydown.space)="$event.stopPropagation()"   [(ngModel)]="hslide.cardBigText" /> 
+                                                        </div>
+                                                    </div>
+                                                    <div class="flex flex-row gap-4">
+                                                        <div class="flex flex-column" style="width: 50%;">
+                                                            <label for="texto">Texto del Botón</label>
+                                                            <input class="w-full md:w-30rem mb-5" pInputText (keydown.space)="$event.stopPropagation()"   [(ngModel)]="hslide.buttonText" /> 
+                                                        </div>
+                                                        <div class="flex flex-column" style="width: 50%;">
+                                                            <label for="texto">URL del Botón</label>
+                                                            <input class="w-full md:w-30rem mb-5" pInputText (keydown.space)="$event.stopPropagation()"   [(ngModel)]="hslide.urlButton" /> 
+                                                        </div>
+                                                    </div>
+                                                    <div class="flex flex-row gap-4">
+                                                        <div class="flex flex-column" style="width: 50%;">
+                                                            <label for="texto">Hashtag</label>
+                                                            <input class="w-full md:w-30rem mb-5" pInputText (keydown.space)="$event.stopPropagation()"   [(ngModel)]="hslide.cardHashtag" /> 
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="flex flex-column gap-2">
+                                                    <div>&nbsp;</div>
+                                                    <button label="Eliminar Slide" pButton pRipple type="button"
+                                                        class="p-button-rounded p-button-text p-button-danger mb-5"
+                                                        (click)="removeNWidgetItem()"></button>
+                                                </div>
+                                            </div>
+                                        }
+                                    }
+                            </div>
+                        </div>
+                    </div>
+                </ng-template>
+            </p-orderList>
+            <div class="mt-4"></div>
+            <p-button label="Insertar widget" styleClass="p-button-link" (onClick)="toggleWidgetMenu()"></p-button>
+            @if (isVisibleWidgetSelector) {
+                <div class="card">
+                    <h4 class="font-semibold">Selecciona un widget</h4>
+                    <p-dataView #dv [value]="availableWidgets">
+                        <ng-template pTemplate="list" let-widgets>
+                            <div class="grid grid-nogutter">
+                                @for (item of widgets; track item) {
+                                    <div class="col-12"  class="col-12">
+                                        <div class="flex flex-column sm:flex-row sm:align-items-center p-4 gap-3">
+                                            <!-- <div class="md:w-10rem relative">
+                                                <img class="block xl:block mx-auto border-round w-full" [src]="'https://primefaces.org/cdn/primeng/images/demo/product/' + item.name" [alt]="item.name" />
+                                            </div> -->
+                                            <div class="flex flex-column md:flex-row justify-content-between md:align-items-center flex-1 gap-4">
+                                                <div class="flex flex-row md:flex-column justify-content-between align-items-start gap-2">
+                                                    <div>
+                                                        <div class="text-lg font-medium text-900 mt-2">{{ item.name }}</div>
+                                                    </div>
+                                                </div>
+                                                <div class="flex flex-column md:align-items-end gap-5">
+                                                    <div class="flex flex-row-reverse md:flex-row gap-2">
+                                                        <p-button icon="pi pi-plus" class="flex-auto md:flex-initial white-space-nowrap" label="Agregar Widget" (onClick)="addWidget(item)"/>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+                        </ng-template>
+                    </p-dataView>
+          
+                </div>
+            }
+    </div>
+</div>

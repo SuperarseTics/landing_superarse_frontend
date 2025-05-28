@@ -1,0 +1,29 @@
+<vicarti-shortcut-widget></vicarti-shortcut-widget>
+<vicarti-menu-widget></vicarti-menu-widget>
+
+<div id="body">
+    <h2 class="font-semibold text-5xl py-8 mt-4 text-[#1283C6]" style="margin-left: 15%; margin-right: 15%;">
+        Reglamentos
+    </h2>
+    <div *ngFor="let reglamento of reglamentos" class="pdf-container">
+        <div class="gap-8" style="margin-left: 15%; margin-right: 15%;">
+            <!-- Título con evento de clic -->
+            <div class="font-semibold text-3xl cursor-pointer text-justify flex justify-between items-center"
+                (click)="toggleExpansion(reglamento.id)">
+                <b class="text-justify">
+                    {{ reglamento.name }}
+                </b>
+                <b class="ml-2  text-2xl"> &gt; </b>
+            </div>
+
+            <!-- Contenido del reglamento -->
+            <div *ngIf="expandedState[reglamento.id]" [id]="'content-' + reglamento.id" class="pdf-content">
+                <!-- <iframe [src]="reglamento.src | safeUrl" style="width: 100%; height: 80vh; border: none;"></iframe> -->
+                <app-pdf-viewer [src]="reglamento.src"></app-pdf-viewer>
+            </div>
+        </div>
+        <div class="border-t-4 border-gray-300 my-5" style="margin-left: 15%; margin-right: 15%;"></div>
+    </div>
+</div>
+<vicarti-footer class="block" style="margin-top:64px;"></vicarti-footer>
+<app-whatsapp></app-whatsapp>

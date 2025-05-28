@@ -1,0 +1,123 @@
+<vicarti-shortcut-widget></vicarti-shortcut-widget>
+<vicarti-menu-widget></vicarti-menu-widget>
+
+<div id="body">
+    <h2 class="font-semibold text-5xl py-8 mt-4 text-[#1283C6]" style="margin-left: 15%; margin-right: 15%;">
+        {{ title }}
+    </h2>
+
+    <div class="flex flex-row gap-8 justify-center" style="margin-left: 15%; margin-right: 15%;">
+        <div class="w-1/2 flex flex-col gap-4 text-justify">
+            <div class="flex flex-col gap-4 text-justify">
+                <b class="font-bold text-3xl text-black">Período Académico (noviembre 2023 - abril 2024)</b>
+            </div>
+            <ul class="list-outside list-disc mb-2" style="margin-left: 5%; margin-right: 5%;">
+                <li *ngFor="let value of data1" class="mt-4">
+                    <label *ngIf="value.title != ''"> {{ value.title }}</label>
+                    <div *ngIf="value.type == 'one'">
+                        <div *ngFor="let subdata of value.files">
+                            <a class="text-[#1283C6] hover:text-[#FBBF2D]" *ngIf="subdata.type == 'pdf'"
+                                (click)="redirigir('pdf-viewer', subdata.title, subdata.src, 'pdf')"
+                                style="cursor: pointer;">{{
+                                subdata.title }}
+                            </a>
+                            <a class="text-[#1283C6] hover:text-[#FBBF2D]" *ngIf="subdata.type == 'download'"
+                                [href]="subdata.src" style="cursor: pointer;">{{ subdata.title }}
+                            </a>
+
+                        </div>
+                    </div>
+                    <ul *ngIf="value.type == 'multiple'" class="list-outside list-disc mb-2"
+                        style="margin-left: 5%; margin-right: 5%;">
+                        <li *ngFor="let subdata of value.files">
+                            <a class="text-[#1283C6] hover:text-[#FBBF2D]" *ngIf="subdata.type == 'pdf'"
+                                (click)="redirigir('pdf-viewer', subdata.title, subdata.src, 'pdf')"
+                                style="cursor: pointer;">{{
+                                subdata.title }}
+                            </a>
+                            <a class="text-[#1283C6] hover:text-[#FBBF2D]" *ngIf="subdata.type == 'download'"
+                                [href]="subdata.src" style="cursor: pointer;">{{ subdata.title }}
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+            <div class="flex flex-col gap-4 text-justify">
+                <b class="font-bold text-3xl text-black">Periodo Académico (mayo - octubre 2024)</b>
+            </div>
+            <ul class="list-outside list-disc mb-2" style="margin-left: 5%; margin-right: 5%;">
+                <li *ngFor="let value of data2" class="mt-4">
+                    <label *ngIf="value.title != ''"> {{ value.title }}</label>
+                    <div *ngIf="value.type == 'one'">
+                        <div *ngFor="let subdata of value.files">
+                            <a class="text-[#1283C6] hover:text-[#FBBF2D]" *ngIf="subdata.type == 'pdf'"
+                                (click)="redirigir('pdf-viewer', subdata.title, subdata.src, 'pdf')"
+                                style="cursor: pointer;">{{
+                                subdata.title }}
+                            </a>
+                            <a class="text-[#1283C6] hover:text-[#FBBF2D]" *ngIf="subdata.type == 'download'"
+                                [href]="subdata.src" style="cursor: pointer;">{{ subdata.title }}
+                            </a>
+
+                        </div>
+                    </div>
+                    <ul *ngIf="value.type == 'multiple'" class="list-outside list-disc mb-2"
+                        style="margin-left: 5%; margin-right: 5%;">
+                        <li *ngFor="let subdata of value.files">
+                            <a class="text-[#1283C6] hover:text-[#FBBF2D]" *ngIf="subdata.type == 'pdf'"
+                                (click)="redirigir('pdf-viewer', subdata.title, subdata.src, 'pdf')"
+                                style="cursor: pointer;">{{
+                                subdata.title }}
+                            </a>
+                            <a class="text-[#1283C6] hover:text-[#FBBF2D]" *ngIf="subdata.type == 'download'"
+                                [href]="subdata.src" style="cursor: pointer;">{{ subdata.title }}
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+            <div class="flex flex-col gap-4 text-justify">
+                <b class="font-bold text-3xl text-black">Período Académico (noviembre 2024 - abril 2025)</b>
+            </div>
+            <ul class="list-outside list-disc" style="margin-left: 5%; margin-right: 5%;">
+                <li *ngFor="let value of data3" class="mt-4">
+                    <label *ngIf="value.title != ''"> {{ value.title }}</label>
+                    <div *ngIf="value.type == 'one'">
+                        <div *ngFor="let subdata of value.files">
+                            <a class="text-[#1283C6] hover:text-[#FBBF2D]" *ngIf="subdata.type == 'pdf'"
+                                (click)="redirigir('pdf-viewer', subdata.title, subdata.src, 'pdf')"
+                                style="cursor: pointer;">{{
+                                subdata.title }}
+                            </a>
+                            <a class="text-[#1283C6] hover:text-[#FBBF2D]" *ngIf="subdata.type == 'download'"
+                                [href]="subdata.src" style="cursor: pointer;">{{ subdata.title }}
+                            </a>
+
+                        </div>
+                    </div>
+                    <ul *ngIf="value.type == 'multiple'" class="list-outside list-disc mb-2"
+                        style="margin-left: 5%; margin-right: 5%;">
+                        <li *ngFor="let subdata of value.files">
+                            <a class="text-[#1283C6] hover:text-[#FBBF2D]" *ngIf="subdata.type == 'pdf'"
+                                (click)="redirigir('pdf-viewer', subdata.title, subdata.src, 'pdf')"
+                                style="cursor: pointer;">{{
+                                subdata.title }}
+                            </a>
+                            <a class="text-[#1283C6] hover:text-[#FBBF2D]" *ngIf="subdata.type == 'download'"
+                                [href]="subdata.src" style="cursor: pointer;">{{ subdata.title }}
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <div class="w-1/2 flex flex-col gap-4 text-justify">
+            <img src="../../../../../assets/modules/talento-humano/postulacion/profesores-no-titulares/concurso no titulares.png"
+                style="width:100%;">
+        </div>
+    </div>
+</div>
+
+
+<vicarti-footer class="block" style="margin-top:64px;"></vicarti-footer>
+<app-whatsapp></app-whatsapp>

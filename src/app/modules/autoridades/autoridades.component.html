@@ -1,0 +1,38 @@
+<vicarti-shortcut-widget></vicarti-shortcut-widget>
+<vicarti-menu-widget></vicarti-menu-widget>
+
+<div id="body">
+    <!-- <app-orgchart></app-orgchart> -->
+
+</div>
+
+<div id="body" style="margin-left: 15%; margin-right: 15%;">
+    <h2 class="font-semibold text-5xl py-8 mt-4 text-[#1283C6] ">
+        <span class="font-normal">
+            Nuestras
+        </span>
+        Autoridades
+    </h2>
+    <div class="gap-8 text-justify mb-5" style="margin-left: 1%; margin-right: 1%;">
+        <div class="grid grid-cols-5 gap-4">
+            <div *ngFor="let item of data" >
+                <div class="gap-4 text-justify">
+                    <img class="shadow-lg shadow-black/20 hover:bg-gray-50 object-cover w-full h-[35vh]" [src]="item.image" style="width: 100%;">
+                </div>
+                <div class="text-center mt-4">
+                    <p class="font-semibold text-xl">{{ item.name }}</p>
+                    <p class="font-semibold text-lg">{{ item.title }}</p>
+                </div>
+                <div class="text-center mt-4">
+                    <a [href]="item.email">
+                        <i class="pi pi-inbox" style="font-size: 1.5rem;"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<vicarti-footer class="block" style="margin-top:64px;"></vicarti-footer>
+<app-whatsapp></app-whatsapp>

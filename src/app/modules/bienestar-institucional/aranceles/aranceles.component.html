@@ -1,0 +1,33 @@
+<vicarti-shortcut-widget></vicarti-shortcut-widget>
+<vicarti-menu-widget></vicarti-menu-widget>
+
+<div id="body" style="margin-left: 15%; margin-right: 15%;">
+    <div class="flex flex-row gap-8 justify-center py-8 mt-4 text-xl">
+        <div class="w-2/3 flex flex-col gap-4 text-justify">
+            <h2 class="font-semibold text-5xl text-[#1283C6]">
+                Aranceles
+            </h2>
+            <div *ngFor="let arancel of aranceles" class="pdf-container">
+                <div class="gap-8">
+                    <div class="font-semibold text-3xl cursor-pointer text-justify flex justify-between items-center"
+                        (click)="toggleExpansion(arancel.id)">
+                        <b class="text-justify">
+                            {{ arancel.name }}
+                        </b>
+                        <b class="ml-2  text-2xl"> &gt; </b>
+                    </div>
+                    <div *ngIf="expandedState[arancel.id]" [id]="'content-' + arancel.id" class="pdf-content mt-4">
+                        <app-pdf-viewer [src]="arancel.src"></app-pdf-viewer>
+                    </div>
+                </div>
+                <div class="border-t-4 border-gray-300 my-5"></div>
+            </div>
+        </div>
+        <div class="w-1/3 flex flex-col gap-4 text-justify">
+            <app-floating-submenu [submenu]="'Transparencia'"></app-floating-submenu>
+        </div>
+    </div>
+</div>
+
+<vicarti-footer class="block" style="margin-top:64px;"></vicarti-footer>
+<app-whatsapp></app-whatsapp>
