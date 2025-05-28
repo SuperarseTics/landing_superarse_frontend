@@ -23,9 +23,9 @@ export class ShortcutWidgetComponent {
             value: 'mailto:matriculas@superarse.edu.ec'
         },
         {
-            name: 'Moodle',
+            name: 'Q10',
             type: 'link',
-            value: 'https://aulavirtualsuperarse.edu.ec/'
+            value: 'https://superarse.q10.com'
         },
         // {
         //     name: 'Biblioteca Dra. Mery Navas',
