@@ -6,7 +6,7 @@
 # Node artifact files
 .angular/
 node_modules/
-dist/
+#dist/
 
 # Compiled Java class files
 *.class
