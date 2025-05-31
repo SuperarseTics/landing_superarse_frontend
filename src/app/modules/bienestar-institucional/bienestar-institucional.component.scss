@@ -1,0 +1,23 @@
+.image-container {
+  width: 70%;
+  margin: 40px auto; /* Más espacio con los bordes */
+  padding: 30px;      /* Espacio interno adicional */
+}
+
+.image-row {
+  display: flex;
+  justify-content: center;
+  gap: 40px; /* Aumenta el espacio entre imágenes */
+  margin-bottom: 10px; /* Más espacio entre filas */
+}
+
+.zoom-image {
+  width: 40%;
+  max-width: 300px;
+  transition: transform 0.3s ease;
+  border-radius: 10px;
+  cursor: pointer;
+}
+.zoom-image:hover {
+  transform: scale(1.1);
+}
