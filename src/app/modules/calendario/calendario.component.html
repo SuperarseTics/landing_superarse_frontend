@@ -6,21 +6,61 @@
         class="font-semibold text-5xl py-8 mt-4 text-[#1283C6]"
         style="margin-left: 15%; margin-right: 15%"
     >
-        Calendarios
+        Procesos Académicos
     </h2>
+
+    <h5
+        class="font-semibold text-5xl py-8 mt-4 text-[#1283C6]"
+        style="margin-left: 15%; margin-right: 15%"
+    >
+        Proceso de Enseñanza-Aprendizaje
+    </h5>
 
     <div
         class="gap-8 text-justify mb-5"
         style="margin-left: 15%; margin-right: 15%"
     >
         <iframe
-            src="./assets/modules/calendario/CALENDARIO MAYO - OCTUBRE 2025 .pdf"
+            src="https://view.genially.com/6838d0c95ee329eed087c00c/presentation-proceso-de-ensenanza-aprendizaje"
             width="100%"
             height="800px"
-            style="margin-left: 15%; margin-right: 15%; border: none"
         >
         </iframe>
     </div>
+
+    <div
+        class="border-t-4 border-gray-300 my-5"
+        style="margin-left: 15%; margin-right: 15%"
+    ></div>
+
+    <div class="container mx-auto px-4 py-8">
+  <h2 class="text-3xl md:text-5xl font-semibold text-[#1283C6] text-center mb-8">
+    Calendarios
+  </h2>
+
+  <label for="calendario-select" class="block text-lg md:text-xl mb-2 text-gray-700">
+    Seleccione un calendario:
+  </label>
+  <select
+    id="calendario-select"
+    (change)="onSelectChange($event.target.value)"
+    class="w-full border border-gray-300 rounded-lg p-3 mb-6 text-base md:text-lg"
+  >
+    <option value="">-- Seleccione una opción --</option>
+    <option *ngFor="let item of calendarios | keyvalue" [value]="item.key">
+      {{ item.key }}
+    </option>
+  </select>
+
+  <div *ngIf="sanitizedPdfUrl" class="w-full">
+    <iframe
+      [src]="sanitizedPdfUrl"
+      class="w-full h-[80vh] border-0"
+      allowfullscreen
+    ></iframe>
+  </div>
+</div>
+
 </div>
 
 <vicarti-footer class="block" style="margin-top: 64px"></vicarti-footer>

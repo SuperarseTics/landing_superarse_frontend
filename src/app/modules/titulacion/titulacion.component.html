@@ -50,8 +50,7 @@
                 </div>
 
                 <div [id]="'content-' + titulacion.id" class="pdf-content">
-                    <!-- <iframe [src]="titulacion.src | safeUrl" style="width: 100%; height: 80vh; border: none;"></iframe> -->
-                    <app-pdf-viewer [src]="titulacion.src"></app-pdf-viewer>
+                    <iframe [src]="titulacion.src | safeUrl" style="width: 100%; height: 80vh; border: none;"></iframe>
                 </div>
             </section>
             <section *ngIf="titulacion.name == 'CALENDARIO DE TITULACIÓN'" class="mt-4">
@@ -59,7 +58,14 @@
                     CALENDARIO DE TITULACIÓN
                 </b>
                 <div [id]="'content-' + titulacion.id" class="pdf-content">
-                    <!-- <app-pdf-viewer [src]="titulacion.src | safeUrl"></app-pdf-viewer> -->
+                    <iframe [src]="titulacion.src | safeUrl" style="width: 100%; height: 80vh; border: none;"></iframe>
+                </div>
+            </section>
+            <section *ngIf="titulacion.name == 'CALENDARIO DE EXAMEN COMPLEXIVO'" class="mt-4">
+                <b class="font-semibold text-3xl">
+                    CALENDARIO DE EXAMEN COMPLEXIVO
+                </b>
+                <div [id]="'content-' + titulacion.id" class="pdf-content">
                     <iframe [src]="titulacion.src | safeUrl" style="width: 100%; height: 80vh; border: none;"></iframe>
                 </div>
             </section>

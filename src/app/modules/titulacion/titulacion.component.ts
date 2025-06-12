@@ -27,7 +27,8 @@ import { PdfViewerComponent } from '../components/pdf-viewer/pdf-viewer.componen
 export class TitulacionComponent implements OnInit {
     titulaciones = [
         { id: 'pdf-container1', name: 'MANUAL DE TITULACIÓN', src: '../../../assets/modules/titulacion/MANUAL DE TITULACION REV TQ 2024-2025 (1)-signed-signed-signed (1).pdf' },
-        { id: 'pdf-container2', name: 'CALENDARIO DE TITULACIÓN', src: '../../../assets/modules/titulacion/CALENDARIO DE TITULACIÓN AC16-12-2024 1.pdf' },
+        { id: 'pdf-container2', name: 'CALENDARIO DE TITULACIÓN', src: '../../../assets/modules/titulacion/CRONOGRAMA DE TITULACION.pdf' },
+        { id: 'pdf-container3', name: 'CALENDARIO DE EXAMEN COMPLEXIVO', src: '../../../assets/modules/titulacion/CRONOGRAMA EXAMEN COMPLEXIVO.pdf' },
     ];
 
     expandedState: { [key: string]: boolean } = {}; // Controla qué titulaciones están desplegados
