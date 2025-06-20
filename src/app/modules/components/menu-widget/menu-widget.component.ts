@@ -355,6 +355,19 @@ export class MenuWidgetComponent implements AfterViewInit {
                     ]
                 },
                 {
+                    name: "Convocatorias",
+                    group: [
+                        {
+                            name: 'Planificación Gestión de Investigación PAO mayo - octubre 2025',
+                            value: '/assets/modules/investigación/convocatorias/PLANIFICACION GESTION DE INVESTIGACION_PAO_may_oct_2025.pdf'
+                        },
+                        {
+                            name: 'Proyectos de Investigación PAO mayo - octubre 2025',
+                            value: '/investigacion-convocatorias'
+                        }
+                    ]
+                },
+                {
                     name: "Publicaciones",
                     group: [
                         {
