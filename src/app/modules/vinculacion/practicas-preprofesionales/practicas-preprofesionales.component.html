@@ -1,29 +1,46 @@
 <vicarti-shortcut-widget></vicarti-shortcut-widget>
 <vicarti-menu-widget></vicarti-menu-widget>
-<h2 class="font-semibold text-5xl py-8 mt-4 text-[#1283C6]" style="margin-left: 15%; margin-right: 15%;">
+<h2
+    class="font-semibold text-5xl py-8 mt-4 text-[#1283C6]"
+    style="margin-left: 15%; margin-right: 15%"
+>
     Practicas Pre-Profesionales
 </h2>
 
-<ul class="list-outside list-none mb-2" style="margin-left: 15%; margin-right: 15%;">
+<ul
+    class="list-outside list-none mb-2"
+    style="margin-left: 15%; margin-right: 15%"
+>
     <li *ngFor="let section of data">
-        <div *ngIf="section.type == 'list-urls'" [id]="'content-' + section.id" class="pdf-content mt-4">
-            <div class="text-3xl cursor-pointer text-justify flex justify-between items-center"
-                (click)="toggleExpansion(section.id)">
+        <div
+            *ngIf="section.type == 'list-urls'"
+            [id]="'content-' + section.id"
+            class="pdf-content mt-4"
+        >
+            <div
+                class="text-3xl cursor-pointer text-justify flex justify-between items-center"
+                (click)="toggleExpansion(section.id)"
+            >
                 <b class="text-justify">
                     {{ section.name }}
                 </b>
-                <b class="ml-2  text-2xl"> &gt; </b>
+                <b class="ml-2 text-2xl"> &gt; </b>
             </div>
-            <div *ngIf="expandedState[section.id]" class="gap-8 mt-4"
-                style="margin-left: 2%; margin-right: 2%;">
-                <table class="table-fixed" style="width: 100%;">
+            <div
+                *ngIf="expandedState[section.id]"
+                class="gap-8 mt-4"
+                style="margin-left: 2%; margin-right: 2%"
+            >
+                <table class="table-fixed" style="width: 100%">
                     <tbody>
                         <tr *ngFor="let file of section.files">
                             <td>
                                 <div class="gap-8 text-justify text-xl">
                                     <div class="mt-5 text-center">
-                                        <a [href]="file.src"
-                                            class="hover:text-[#FBBF2D] hover:bg-white px-6 py-3 bg-[#1283C6] text-white font-semibold rounded-lg shadow-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75">
+                                        <a
+                                            [href]="file.src"
+                                            class="hover:text-[#FBBF2D] hover:bg-white px-6 py-3 bg-[#1283C6] text-white font-semibold rounded-lg shadow-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75"
+                                        >
                                             {{ file.name }}
                                         </a>
                                     </div>
@@ -34,19 +51,38 @@
                 </table>
             </div>
         </div>
-        <div *ngIf="section.type == 'pdf'" [id]="'content-' + section.id" class="pdf-content mt-4">
-            <div class="font-semibold text-3xl cursor-pointer text-justify flex justify-between items-center"
-                (click)="toggleExpansion(section.id)">
+        <div
+            *ngIf="section.type == 'pdf'"
+            [id]="'content-' + section.id"
+            class="pdf-content mt-4"
+        >
+            <div
+                class="font-semibold text-3xl cursor-pointer text-justify flex justify-between items-center"
+                (click)="toggleExpansion(section.id)"
+            >
                 <b class="text-justify">
                     {{ section.name }}
                 </b>
-                <b class="ml-2  text-2xl"> &gt; </b>
+                <b class="ml-2 text-2xl"> &gt; </b>
             </div>
-            <app-pdf-viewer *ngIf="expandedState[section.id]" [src]="section.value"></app-pdf-viewer>
+            <div
+                *ngIf="expandedState[section.id]"
+                style="width: 100%; height: 600px; border: none"
+            >
+                <iframe
+                    [src]="section.value | safeUrl"
+                    style="width: 100%; height: 100%"
+                >
+                    Tu navegador no soporta iframes. Puedes
+                    <a [href]="section.value" target="_blank"
+                        >descargar el PDF</a
+                    >.
+                </iframe>
+            </div>
         </div>
         <div class="border-t-4 border-gray-300 my-5"></div>
     </li>
 </ul>
 
-<vicarti-footer class="block" style="margin-top:64px;"></vicarti-footer>
+<vicarti-footer class="block" style="margin-top: 64px"></vicarti-footer>
 <app-whatsapp></app-whatsapp>
