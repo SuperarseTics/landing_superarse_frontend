@@ -18,7 +18,8 @@ export class PracticasPreprofesionalesComponent implements OnInit {
             id: 'pdf-container1',
             name: "Reglamento de Practicas Preprofesionales",
             type: 'pdf',
-            value: '/assets/modules/vinculación/3017_783_COD_3282_100225173133.pdf'
+            /*value: '/assets/modules/vinculación/3017_783_COD_3282_100225173133.pdf',*/
+            value: '../../../../assets/modules/vinculación/3017_783_COD_3282_100225173133.pdf'
         },
         {
             id: 'list-container2',
