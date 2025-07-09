@@ -24,7 +24,7 @@ export class PracticasPreprofesionalesComponent implements OnInit {
         {
             id: 'list-container2',
             name: 'Formatos',
-            type: 'list-urls',
+            type: 'docx',
             files: [
                 {
                     name: 'Informe de prácticas preprofesionales',
