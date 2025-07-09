@@ -65,19 +65,14 @@
                 </b>
                 <b class="ml-2 text-2xl"> &gt; </b>
             </div>
-            <div
-                *ngIf="expandedState[section.id]"
-                style="width: 100%; height: 600px; border: none"
-            >
-                <iframe
-                    [src]="section.value | safeUrl"
-                    style="width: 100%; height: 100%"
+            <div *ngIf="expandedState[section.id]">
+                <a
+                    [href]="section.value"
+                    target="_blank"
+                    class="btn btn-primary"
                 >
-                    Tu navegador no soporta iframes. Puedes
-                    <a [href]="section.value" target="_blank"
-                        >descargar el PDF</a
-                    >.
-                </iframe>
+                    Ver {{ section.name }}
+                </a>
             </div>
         </div>
         <div class="border-t-4 border-gray-300 my-5"></div>
