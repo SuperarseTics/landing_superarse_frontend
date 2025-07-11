@@ -25,7 +25,7 @@ export class AutoridadesComponent {
         {
             name: 'MSc. Tatiana Quishpe',
             title: 'VICERRECTORA ACADÉMICA',
-            image: '/assets/modules/autoridades/TATIANA QUISHPE.JPG',
+            image: '/assets/modules/autoridades/Tatiana_Quishpe25.png',
             email: 'mailto:tatiana.quishpe@superarse.edu.ec'
         },
         {
